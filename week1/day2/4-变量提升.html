@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    
+    // console.log(a);
+    // var a; //声明  只声明 不定义 默认值时undefined
+    // a = 12; //定义
+
+    // console.log(f());//变量提升阶段的f  222
+    
+    // var f = function (){
+    //     console.log(111);
+        
+    // }
+    // console.log(f());//重新赋值过后的f  111
+
+    // function f(){
+    //     console.log(222);
+    // }
+    // console.log(f());//由于变量提升阶段已经定义了f，所以上边的function f就不执行了111
+
+    /*
+        变量提升(声)，在代码执行之前，js会把代码中的带var和带function 的提前声明
+            带var 的时只声明 不定义
+            带 function的时即声明 又定义
+        变量提升 只提升等号左边的部分
+        变量提升 对于条件判断来说，不管是否成立，都会进行变量提升
+            在条件句或者循环句中的function声明 高版本浏览器是只声明 不定义的 ,function 与var 一样
+    */ 
+
+    console.log(f);//undefined
+    console.log(a);//undefined
+    if(1<2){
+        var a = 10;
+        function f(){
+            console.log(666);
+        }
+    }    
+    console.log(f);
+    console.log(a);
+
+    console.log(ff);
+    
+    for (let i = 0; i < 2; i++) {
+        function ff(){
+            console.log(222);
+        }
+    }
+    
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+    变量提升
+        在代码执行之前，会把带var 和 function 的提前声明
+            var 只声明 不定义
+            function 即声明 又定义  大括号里面的 只声明 不定义
+            只提升等号左边的部分，return 后面的 也不提升
+
+            let const 是不存在 变量提升的 有暂时性死区，在声明上方 绝对不能调用
+
+    堆内存 用来存储引用数据类型
+    栈内存 用来存储值类型  提供代码运行环境(作用域)
+
+    作用域 scope 
+        代码能够起作用的区域
+            全局作用域 页面一打开就会形成一个全局作用域 只有一个
+            私有作用域 函数一执行就会形成一个私有作用域 可以有多个
+            块级作用域 针对 let const 存在的一种作用域
+    全局变量 在全局作用域声明的变量
+    私有变量 在私有作用域声明的变量
+
+    作用域链 变量的查找机制，在某个私有作用域中，存在某个变量，那么这个变量的取值，他是有自己的一套规律的，先在自己作用域查找，若不是自己作用域的变量，则取上级作用域查找，找不到就一直查找到window，window还没有就报错
+
+    上级作用域 私有作用域定义的作用域位置
+
+*/ 
+</script>

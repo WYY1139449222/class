@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>    
+/*
+    箭头函数 没有 this 和 arguments ，把这两者当作普通变量对待,指向上级作用域
+    定时器里面的this也是window
+
+    this   就是 函数执行的主体
+
+    事件绑定的元素  就是当前绑定的元素
+    自执行函数中的this是window
+
+    this 的指向是谁  我们可以通过看点的方式来确定 函数执行 点 前面是谁 this 就是谁，没点 就是window
+
+    
+*/ 
+// ~function(){}()
+// var obj = {
+//     age:100,
+//     f(){
+//         console.log(this.age);
+        
+//     },
+//     f2:function(){
+
+//     },
+//     f3:()=>{
+//         console.log(this);
+        
+//     }
+// }
+// obj.f()
+// var fn = obj.f;
+// fn()
+// var ary = [1,2,3,fn];
+// ary[3]();
+// obj.f3()
+
+
+// function fn2(){
+//     return ()=>{
+//         console.log(arguments);
+        
+//     }
+// }
+// fn2(1,2,3,4,5)()
+
+// setTimeout(function(){
+//     console.log(this);
+// },2000)
+
+var num = 1;
+var obj = {
+    num:10,
+    fn:(function(){
+        this.num*=3;
+        return function(){
+            num+=2;
+            this.num++;
+        }
+    })()
+
+};
+var f = obj.fn;
+f();
+obj.fn();
+
+console.log(num,obj.num);
+
+</script>
