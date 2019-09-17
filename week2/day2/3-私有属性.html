@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // in 是用来查看某个属性是否属于某个对象，换句话说 就是 该对象能否调用到该属性
+    //in 只能判断出 某个属性是不是属于某个对象，但不能判断出是不是他的私有属性
+
+    // hasOwnProperty 查看某个属性是不是某个对象的私有属性
+    //hasOwnProperty 方法在基类原型上 所以任何数据类型 （除去 null undefined）都能调到该属性
+
+    //hasPubProperty 共有属性
+    // var obj = {
+    //     name:'xxx',
+    //     age:20
+    // }
+    
+    // Object.prototype.hasPubProperty = function(key){
+    //     // if (key in this && !this.hasOwnProperty(key)) {
+    //     //     return true
+    //     // }
+    //     //     return false
+    //     return (key in this && !this.hasOwnProperty(key))
+    // }
+   
+    // console.log(obj.hasPubProperty('toString'));
+    
+   //原型重构 注意 constructor 的指向
+   function Person (name,age){
+       this.name = name;
+       this.age = age;
+   }
+   Person.prototype.eat=function(){};
+
+   let obj = {
+       eat(){},
+       play(){}
+   }
+   Person.prototype = obj;
+
+</script>

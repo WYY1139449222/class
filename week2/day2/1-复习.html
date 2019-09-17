@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        面向对象：类 实例
+        JS中的内置类：Array String Number Function RegExp Date Object...
+
+        字面量 var ary = []
+        构造函数 var ary = new Array()
+
+        自定义类 function A(){}
+        自定义类的实例 只能通过new的方式创建
+
+    js 中常见的设计模式
+        单例模式 高级单例模式 工厂模式 构造函数模式 原型模式
+    */ 
+    //单例模式 命名空间
+    // var obj = {
+    //     xxx:xxx,
+    //     xxx:xxx
+    // }
+    //高级单例模式
+    var obj2 = (function(){
+        var xxx=xxx;
+        var qqq = qqq;
+        function f(){
+            console.log(qqq,xxx);
+            
+        }
+        return {
+            xxx,
+            qqq,
+            f
+        }
+    })()
+    //工厂模式
+    function factory(name,age){
+        var obj = {
+            name,age,eat(){},play(){}
+        }
+        return obj;
+    }
+    var per1 = factory('xxxx',22);
+    //构造函数模式 eslint
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+        this.eat = function(){
+
+        }
+        this.play = function () {
+
+        }
+        
+    }
+    var p1 = new Person('小米',22);//p1是Person类的一个实例，Person是一个自定义类
+    //new 执行时 函数中的this就是当前创造的实例 默认返回值就是this、
+    // console.log(p1);
+    class Man{
+        constructor(name,age){
+            this.name=name;
+            this.age = age;
+        }
+    }
+    //原型模式 在构造函数的基础上 增加了一个原型(prototype)；原型模式就是一个堆内存
+    function Women(name,age){
+        this.name = name;
+        this.age = age;
+        this.eat = function(){
+        }
+        this.play = function () {
+        }
+    }
+    // Woman.prototype.eat = function(){
+    //     console.log('chi');
+        
+    // };
+    // Women.prototpe.play = function(){
+    //     console.log('ch2222');
+        
+    // };
+    var w1 = new Women('小米',22);
+    var w2 = new Women('小米',22);
+    w1.eat === w2.eat;//实例会通过 __proto__去访问所属类的原型
+
+    class Girl{
+        constructor(name,age){
+            this.name= name;
+            this.age = age;
+        }
+        eat(){
+
+        }
+        play(){
+
+        }
+    }
+    var g1 = new Girl('hh',22)
+    console.log(g1);
+    
+
+    //作用域链 是变量的查找机制；
+    //原型链 是属性的查按照机制 先在自己身上查找，没有的话 通过__proto__ 再去所属类的原型上查找,若所属类的原型上也没有该属性，则通过该原型的__proto__再去原型所属类的原型上接着查找，直到找到Object类(基类)的原型上，在没有的话就是undefined
+</script>

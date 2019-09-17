@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Person(name,age,sex){
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.eat = function(){};
+        this.play = function(){};  
+    }
+    var per1 = new Person('小米',22,33);
+    console.log(per1);
+    
+    //new 执行函数的时候 函数内部的this 都是指向了一个堆内存 函数执行完成之后 又把this返出去，若写了返回值 但返回值是一个值类型 那么默认返回还是this 若返回值是引用数据类型 则返回值是写的引用数据
+
+    //es6 的箭头函数是不能通过new 的方式执行
+    //es6 创造类 的方式 是通过 class 创造的
+    class Fn3{
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+    }
+    var f4 = new Fn3('小米',12);
+    console.log(f4);
+    
+</script>
