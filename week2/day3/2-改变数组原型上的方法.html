@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        内置类的原型的方法可以被修改，但不能重构
+    */ 
+    let ary = [1,2,3,4,5,5,5,66,77,8,8,8,9]
+   Array.prototype.unique = function(){
+        return  [...new Set(this)]
+   }
+   console.log(ary.unique());
+   
+</script>
