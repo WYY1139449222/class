@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+        this.eat = function(){};
+        this.play = function(){}
+        return 123;
+    }
+    let p = new Person('zf',10);
+    //new 执行 开辟一个堆内存  形参赋值 变量提升 开辟一个堆内存 把this指向该堆内存 代码执行 默认返回this 
+    function myNew(...arg){
+        let obj={};
+        let Constructor = arg.shift();
+        obj.__proto__ = Constructor.prototype;
+        let res = Constructor.apply(obj,arg);
+        return typeof res =='object'?res:obj
+        
+    }
+   
+    console.log(myNew(Array,1,2,3))
+    
+</script>

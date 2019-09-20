@@ -26,20 +26,51 @@ var obj = {
     a:12,
     b:13
 }
+Function.prototype.myCall = function(context,...arg){
+    context = context || window;
+    arg = arg ||[]
+    let a= Symbol();
+    context[a] = this;
+    let res = context[a](...arg);
+    delete context[a];
+    return res;
+}
 fn.call(obj,1,2,3,4);
-var f = fn.bind(obj,6,6,6,6);//f 执行 并且把6,6,6,6传给了fn ，fn中的this指向了obj
-//把6，6，6，6 理解成f的默认参数 ，再给f传递参数的时候 会把传递的参数 补在默认参数的后方；
-//bind 返回的f 函数 f中的this不会再更改，call apply bind也不能更改this,new执行时可以改变
-console.log(f);
-//实现一个myBind 用法类似等同于bind
+fn.myCall(obj);
 
+Function.prototype.myApply = function(context,arg){
+    context = context||window
+    arg = arg||[]
+    let a=  Symbol()
+    context[a] = this
+    let res = context[a](...arg)
+    delete context[a]
+    return res
+}
+
+
+fn.apply(obj,[1,2,3,4])
+fn.myApply(obj,[1,2,3,4])
 Function.prototype.myBind = function(context,...arg){
-    //this 是fn
-    var _this = this;
-    return function(...arr){
-        return _this.apply(context,[...arg,...arr]);
+    let _this = this;
+    return function(aee){
+       let res =  _this.apply(context,arg.concat(aee))
+        return res
     }
 }
-var f2 = fn.myBind(obj,6,6,6,6,6)
-f2(22);
+var f = fn.myBind(obj,6,6,6,6);//f 执行 并且把6,6,6,6传给了fn ，fn中的this指向了obj
+//把6，6，6，6 理解成f的默认参数 ，再给f传递参数的时候 会把传递的参数 补在默认参数的后方；
+//bind 返回的f 函数 f中的this不会再更改，call apply bind也不能更改this,new执行时可以改变
+console.log(f());
+//实现一个myBind 用法类似等同于bind
+
+// Function.prototype.myBind = function(context,...arg){
+//     //this 是fn
+//     var _this = this;
+//     return function(...arr){
+//         return _this.apply(context,[...arg,...arr]);
+//     }
+// }
+// var f2 = fn.myBind(obj,6,6,6,6,6)
+// f2(22);
 </script>

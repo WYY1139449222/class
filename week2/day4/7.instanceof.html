@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // xxx instanceof xxx1  检测xxx到基类的原型链上是否存在xxx1
+    //所有的值类型都是false 
+function fn(){
+
+}
+function myInstance(temp,classN){
+   if(typeof temp ==="function"|| typeof temp ==="object"&&temp!==null&&temp.__proto__){
+      return  temp.__proto__ === classN.prototype?true:myInstance(temp=temp.__proto__,classN)
+    }
+    return false
+}
+    console.log(myInstance(fn,Object));
+    // []  instanceof Array;
+    // []  instanceof Object;
+    // []  instanceof Number;
+    // 1  instanceof Number;
+    
+</script>

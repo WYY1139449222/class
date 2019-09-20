@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+function Fn(name){
+    console.log(arguments);
+    console.log(this);
+    this.name=name;
+    return 123
+}
+
+var obj = {
+    name:'zf',
+    age:10
+}
+
+Object.prototype.myNew = function(...arg){
+    let obj = {};
+    console.log(arg);
+   obj.__proto__ = this.prototype;
+   let res = this.apply(obj,arg)
+return typeof res =='object'?res:obj;
+}
+let a =Fn.myNew(2)
+console.log(a);
+
+// Function.prototype.myBind = function(context,...arg){
+//     let _this = this;
+//     return function(...arr){
+//     let res =  _this.apply(context,arg.concat(arr));
+//         return res
+//     }
+// }
+
+
+// let b = Fn.myBind(obj,2,2,2);
+// b(3,3,3)
+// let a = Fn.bind(obj,2,2,2);
+// a(3,3,3);    
+// Function.prototype.myApply = function(context,...arg){
+//     context = context || window;
+//     arg = arg || [];
+//     let a = Symbol();
+//     context[a] = this;
+//     let res = context[a](...arg);
+//     delete context[a];
+//     return res;
+// }
+
+
+// Fn.myApply(obj,[2,2,2])
+// Fn.apply(obj,[2,2,2])
+
+// Function.prototype.myCall = function(context,...arg){
+//     context = context || window;
+    
+//     let a = Symbol();
+//     context[a] = this;
+//     let res = context[a](...arg);
+//     delete context[a];
+//     return res;
+// }
+
+// Fn.myCall(obj,2,2,2)
+
+// Fn.call(obj,2,2,2);
+
+</script>

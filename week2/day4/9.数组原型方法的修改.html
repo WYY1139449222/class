@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //实现一个判断数据类型的方法
+Object.prototype.getType = function(){
+    var str = this.constructor.toString();
+    str = str.slice(9,str.indexOf('('))
+    return str;
+}
+
+    console.log(''.getType());
+    console.log((1).getType());
+    console.log([].getType());
+    
+    // ;
+    // ;
+
+
+// // Array.prototype.myPop = function(){
+// //     this.length--
+// //     return this
+// // }
+// // Array.prototype.myPush = function(...arg){
+// //     for (let i = 0; i < arg.length; i++) {
+// //        this[this.length] = arg[i]
+// //     }
+// //     return this
+// // }
+
+
+// // ary.myPop().myPush(6,6,6).myPop().myPush(4,5)
+
+
+
+// Array.prototype.myReverse = function(){
+//     for (let i = 0; i < this.length/2; i++) {
+        
+//        let a = this[i];
+//        this[i] = this[this.length-i-1];
+//        this[this.length-i-1] = a;
+//     }
+//     return this
+// }
+// ary.myReverse();
+// console.log(ary);
+
+
+// Array.prototype.myUnique = function(){
+//     let obj = {};
+//     for (let i = 0; i < this.length; i++) {
+//       obj[this[i]] = this[i]
+//     }
+//     this.length = 0;
+//     for (const key in obj) {
+//         if (obj.hasOwnProperty(key)) {
+//             this.push(obj[key]);
+//         }
+//     }
+//     return this
+
+    
+
+// }
+
+//lastindexof  indexof
+var ary = [1,5,4,2,3,4,4,4,5,4,4,4,5,5,5,5]
+Array.prototype.myUnique = function(){
+    for (let i = 0; i < this.length; i++) {
+        if (this.indexOf(this[i])!==this.lastIndexOf(this[i])) {
+            this.splice(i,1)
+            i--
+        }
+    }
+    return this
+}
+
+ary.myUnique()
+console.log(ary);
+
+</script>
