@@ -1,88 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
 <script>
-//     var obj = {
-//     name: " 小明",
-//     skill: ["css3", "html5", "es6", "react", "angular"],
-//     say: function () {
-//         for (let i = 0; i < this.skill.length; i++) {
-           
-//             setTimeout( ()=>{
-//                 console.log(`${this.name}会${this.skill[i]}`);
-//             },1000*(i+1))
-            
-//         }
-//     }
-// }
-// function Person(name,skill){
-//     this.name = name;
-//     this.skill = skill
-// }
-// Person.prototype.say = function(){
-//     for (let i = 0; i < this.skill.length; i++) {
-//         setTimeout( ()=>{
-//             console.log(`${this.name}会${this.skill[i]}`);
-//         },1000*(i+1))
-//     }
-// }
-// var p = new Person('小明',["css3", "html5", "es6", "react", "angular"])
-// var p1 = new Person('小红',["css3", "html5", "es6", "react", "angular"])
-// p.say(); 
-// p1.say(); 
-// 上述函数执行的时候  一秒一输出   小明 会 css3 ； 小明会 html5 ; ....
+    //     var obj = {
+    //     name: " 小明",
+    //     skill: ["css3", "html5", "es6", "react", "angular"],
+    //     say: function () {
+    //         for (let i = 0; i < this.skill.length; i++) {
 
-// var name = '中国',
-//     age = 5000;
-// function Person() {
-//     getName = function () {
-//         console.log(this.name)
-//     };
-//     this.name = 'zfpx';
-//     this.age = 9;
-// }
-// Person.name = '珠峰';
-// Person.getName = function () {
-//     console.log(this.name);
-// };
-// Person.prototype.getName = function () {
-//     console.log(this.name);
-// };
-// var obj = {
-//     name: '培训',
-//     f: Person
-// };
-// var per = new Person();
-// per.getName = function () {
-//     console.log(12)
-// };
-// var per2 = new Person();
-// obj.f();
-// Person();
-// per.getName();
-// per2.getName();
+    //             setTimeout( ()=>{
+    //                 console.log(`${this.name}会${this.skill[i]}`);
+    //             },1000*(i+1))
 
-Function.prototype.myCall = function(context,...arg){
-    context = context||window
-    let a = Symbol();
-    context[a] = this;
-    let res = context[a](...arg)
-    delete context[a];
-    return res
-}
+    //         }
+    //     }
+    // }
+    // function Person(name,skill){
+    //     this.name = name;
+    //     this.skill = skill
+    // }
+    // Person.prototype.say = function(){
+    //     for (let i = 0; i < this.skill.length; i++) {
+    //         setTimeout( ()=>{
+    //             console.log(`${this.name}会${this.skill[i]}`);
+    //         },1000*(i+1))
+    //     }
+    // }
+    // var p = new Person('小明',["css3", "html5", "es6", "react", "angular"])
+    // var p1 = new Person('小红',["css3", "html5", "es6", "react", "angular"])
+    // p.say(); 
+    // p1.say(); 
+    // 上述函数执行的时候  一秒一输出   小明 会 css3 ； 小明会 html5 ; ....
 
-console.log(Object.prototype.toString.call([]));
-console.log(Object.prototype.toString.myCall([]));
+    // var name = '中国',
+    //     age = 5000;
+    // function Person() {
+    //     getName = function () {
+    //         console.log(this.name)
+    //     };
+    //     this.name = 'zfpx';
+    //     this.age = 9;
+    // }
+    // Person.name = '珠峰';
+    // Person.getName = function () {
+    //     console.log(this.name);
+    // };
+    // Person.prototype.getName = function () {
+    //     console.log(this.name);
+    // };
+    // var obj = {
+    //     name: '培训',
+    //     f: Person
+    // };
+    // var per = new Person();
+    // per.getName = function () {
+    //     console.log(12)
+    // };
+    // var per2 = new Person();
+    // obj.f();
+    // Person();
+    // per.getName();
+    // per2.getName();
+
+    // Function.prototype.myCall = function(context,...arg){
+    //     context = context||window
+    //     let a = Symbol();
+    //     context[a] = this;
+    //     let res = context[a](...arg)
+    //     delete context[a];
+    //     return res
+    // }
+
+    // console.log(Object.prototype.toString.call([]));
+    // console.log(Object.prototype.toString.myCall([]));
+
+    // function Fn() {
+    //     let a = 1;
+    //     this.a = a;
+    // };
+    // Fn.prototype.say = function () {
+    //     this.a = 2;
+    // };
+    // Fn.prototype = new Fn;
+
+    // let f1 = new Fn;
+
+    // Fn.prototype.b = function () {
+    //     this.a = 3;
+    // };
+    // console.log(f1.a);
+    // console.log(f1.prototype);
+    // console.log(f1.b);
+    // console.log(f1.hasOwnProperty('b'));
+    // console.log('b' in f1);
+    // console.log(f1.constructor == Fn);
+    //     var url="locallhost?key1=val1&key2=vawwel2&key3=val3";
+    //     String.prototype.getParam = function(b){
+
+    //         let a = this.indexOf(b)+b.length+1;
+    //         console.log(a);
+    //         if(this.indexOf('&')==-1){
+    //             let res = this.slice(a)
+    //         }
+    //         let res = this.slice(a,this.indexOf('&',a))
+    //         return res
+    //     }
+    // console.log(url.getParam("key3")); //=>'val3'
 
 
 
+    // function fn(...arg){
+    //     return function(...arr){
+    //         return eval([...arr].concat([...arg]).join('+'))
+    //     }
+    // }
+    // let res = fn(1,2)(3);
+    // console.log(res); //=>6  1+2+3
+
+    // Function.prototype.changeThis=function changeThis(context=window,ary=[]){
+    //     //=>实现你的代码
+    //     let a=Symbol();
+    //     context[a] = this;
+    //     let res = context[a](...ary);
+    //     delete context[a];
+    //     return res
+
+    // };
+    // let obj = {name:'Alibaba'};
+    // function fn(x,y){
+    //     this.total=x+y;
+    //     return this;
+    // }
+    // let res = fn.changeThis(obj,[100,200]);
+    // //res => {name:'Alibaba',total:300}
+    // console.log(res);
+
+
+    // function toArray(){
+    //     //=>实现你的代码
+    //     return [...arguments]
+    // }
+    // let res = toArray(1,2,3,4,5,6);
+    // //=>res = [1,2,3,4,5,6]
+    // console.log(res);
+
+    // Object.prototype.hasPubProperty = function(temp){
+    //     return temp in this&&!this.hasOwnProperty(temp)
+    // }
+    // console.log(''.hasPubProperty('toString'));
+
+    Array.prototype.mySlice = function (n, m) {
+        if (n < 0 && m < 0 && n > m) return []
+        if (n < 0 && m < 0 && n < m) {
+            n = this.length + n
+            m = this.length + m
+        }
+        if(n>this.length) return []
+        if (n >= 0 && m < 0) m = this.length + m
+        if (n > 0 && m > 0 && n > m) return []
+        if (n < 0 && m > this.length) {
+            n = 0;
+            m = this.length;
+        }
+        if (n < 0 && m >= 0) return []
+        var arr = []
+        for (var i = n; i < m; i++) {
+            arr[arr.length] = this[i]
+        }
+        return arr
+    }
+    let ary = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    console.log(ary.slice(10, 2));
+    console.log(ary.mySlice(111, 114));
 </script>
