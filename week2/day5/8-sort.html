@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="nameBtn">性名</button>
+    <button id="ageBtn">年龄</button>
+    <ul id="box">
+        <li>
+            <strong>性名：小明</strong>;
+            <strong>年龄：10</strong>
+        </li>
+    </ul>
+</body>
+</html>
+<script>
+    
+    var ary = [
+       { name:'小明',age:20},
+       { name:'小花',age:16},
+       { name:'小李',age:19},
+       { name:'小黄',age:14},
+       { name:'小车',age:15},
+       { name:'小桐',age:16}
+    ]
+    
+   
+  function render(){
+    var str = '';
+    ary.forEach(item=>{
+        let {name,age}=item;//对象的结构赋值
+       
+        str+=` <li>
+            <strong>性名：${name}</strong>;
+            <strong>年龄：${age}</strong>
+        </li>`
+    })
+    box.innerHTML = str;
+  }
+  render();
+
+nameBtn.flag = ageBtn.flag = 1
+nameBtn.onclick = function(){
+    this.flag*=-1
+        ary.sort((a,b)=> a.name.localeCompare(b.name)*this.flag)
+        render();
+}
+ageBtn.onclick = function(){
+    this.flag*=-1
+    ary.sort((a,b)=>(a.age-b.age)*this.flag)
+    render();
+}
+
+
+
+    /*
+        对象的解构赋值
+            var obj = {name：234，age：345}；
+            var {age} = obj;
+            age就是一个变量 对应的值就是 对象中对应的age 对应的属性值
+    */
+</script>

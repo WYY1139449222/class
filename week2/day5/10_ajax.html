@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+/*
+    ajax是 前端 向后端 要数据的一种方式
+// */
+// var xhr = new XMLHttpRequest();//创造ajax实例
+// xhr.open('get','./data.json',false);//确定请求路径
+// xhr.onreadystatechange = function(){//监听请求状态
+//     if (xhr.readyState==4&&xhr.status==200) {
+//         console.log(JSON.parse(xhr.response));
+//     }
+// }
+// xhr.send();//发送请求
+
+// var name = "WINDOW";
+// function fn(){
+//     console.log(this.name);
+// }
+// var obj = {
+//     name:"OBJ",
+//     fn:()=>{
+//         console.log(this.name);
+//     }
+// };
+// fn();
+// obj.fn();
+// fn.call(obj);
+// window.onload=function(){
+//     //页面加载完成，事件就会触发
+//     fn();
+//     obj.fn();
+// };
+// fn.bind(obj);
+function Fn(){
+   var a = 1;
+   this.a = a;
+}
+Fn.prototype.say = function(){
+    this.a = 2;
+};
+var f2 = new Fn();
+Fn.prototype = new Fn;
+var f1 = new Fn;
+f1.__proto__.b = function (){
+    this.a = 3;
+};
+console.log(f1.a);
+console.log(f1.prototype);
+console.log(f1.b);
+console.log(f2.b);
+console.log(f1.hasOwnProperty('b'));
+console.log('b' in f1);
+console.log(f1.constructor == Fn);
+console.log(Fn.prototype);
+</script>

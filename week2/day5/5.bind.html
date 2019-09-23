@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">按钮1</button>
+    <button id="btn2">按钮2</button>
+</body>
+</html>
+<script>
+
+function fn(){
+        console.log(arguments);
+        console.log(this);
+        console.log('-------------');
+    }
+    // fn();
+
+ 
+var obj = {qqq:12}
+
+Function.prototype.myBind =function(context = wondow,...arg){
+    var _this = this;
+    return function(arr){
+       return _this.apply(context,arg.concat(arr));
+       return _this.apply(context,[...arg,...arr]);
+    }
+}
+
+var res = fn.call(obj,1,2,3)
+var res2 =  fn.apply(obj,[1,2,3])
+var res3 = fn.bind(obj,1,2,3)//res3是一个新函数 
+        //新函数执行的时候 里边的this是obj，默认参数是1，2，3，返回结果是fn的返回结果
+btn.onclick = fn;
+btn2.onclick = res3;
+
+
+/*
+    this 的几中情况
+        箭头函数中的没有this，this是上级作用域的this 箭头函数中的this和arguments当作普通变量
+        new执行时 函数中的this时当前创造的那个实例
+        定时器。自执行函数的this时window
+        事件绑定中的this时绑定的那个元素
+        其他看点 没点都是window，/
+*/
+//  
+</script>

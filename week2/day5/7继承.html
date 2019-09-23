@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //类 的 继承   封装（高内聚低耦合）  多态
+    // Person.prototype = Object.create(Animal.prototype);// create创造了一个空对象 空对象的__proto__ 指向了 Animal的prototype
+
+
+    class Parent{
+        constructor(){
+            this.name = 'parent'
+            this.age = '1212'
+        }
+        say(){
+            console.log('hello');
+            
+        }
+        static qqq =1213
+    }
+    class Child extends Parent{
+        constructor(){
+            super();//写了extends 和constructor 则必写super（）；super其实就是Parent的prototype
+            this.money =100;
+        }
+        say(){
+            console.log('kkk');
+            
+        }
+    }
+    var pp = new Child()
+    console.log(pp);
+    
+</script>
