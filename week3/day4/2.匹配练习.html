@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    //匹配手机号
+    var rag = /^1[3-9]\d{9}$/
+    //身份证验证
+    var reg = /\d{6}(19[7-9]\d|20[01]\d)(0[1-9]|1[0-2])(0[1-9]|[12]\d|3[01])\d{2}\d[\dX]/
+    // 匹配时间 
+    var reg = /^([01]\d|2[0-3])\:[0-5]\d$/
+    //邮箱 不是横杠开头 5-16位@.只能数字 字母 下划线.com|cn|net
+    var reg = /^[^\s-,.\n]{5,16}\@(\w{2,5}.)?\w{2,5}\.(com|cn|net)$/
+    //QQ
+    var reg = /^[0-9]\d{4-9}$/
+
+    let reg = /\bid=[\"\'](\w+)[\"\']\b/g
+
+</script>

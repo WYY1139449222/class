@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box box1  box22 qqqaaa">
+        hello world
+    </div>
+</body>
+</html>
+<script>
+    //自己封装一个方法，可以实现hasClass addClass removeClass  的功能
+    var box = document.getElementsByClassName('box')[0];
+    // hasClass(box,'qqq');//false 判断元素是否有对应的类名
+
+    // function hasClass(ele,cln){
+    //     var reg = new RegExp(`\\b${cln}\\b`,'g')
+    //     var str = ele.className;
+    //     return reg.test(str)
+    // }
+    
+    function hasClass(ele,cln){
+        //先获取 元素的所有的类名； 再去查看类名中有没有指定的类名
+        let str = ele.className;
+        // if(str.indexOf(cln)!=-1){
+        //     return true
+        // }
+        // return false
+
+        // let reg = new RegExp(cln,'g');
+        // return reg.test(str);
+
+        // 思路2 吧类名字符串按照空格拆分成数组， 然后 判断数组中是否有对应的类名
+        // let reg = / +/g;
+        // let ary = str.split(reg);
+        // if(ary.indexOf(cln) !=-1){
+        //     return true
+        // }
+        // return false
+
+        // 思路3 把类名做成一个正则  这个正则需要有左右边界；
+        var cln = cln.replace(/(^ *)|( *$)/g,'');
+        var ary = cln.split('/ +/g')
+        
+        let flag = true;
+        for (let i = 0; i < ary.length; i++) {
+            let reg = new RegExp(`(^| +)${ary[i]}( +|$)`,'g');
+            if(!reg.test(str)){
+                flag = false
+                break;
+            }
+        }
+        return flag;
+        
+        // return reg.test(str);
+
+        // 思路4  把类名做成一个正则  这个正则是判断了类名的左右情况
+        // let reg = new RegExp(`(^| +)${cln}( +|$)`);
+        // return reg.test(str);
+    }
+    console.log(hasClass(box,'box qqqaaa'));
+    
+</script>

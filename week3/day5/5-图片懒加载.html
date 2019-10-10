@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #box{
+            padding-top:2000px;
+        }
+        img{
+            width: 300px;
+            height:200px;
+            background: #b0b0b0;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"><img id="img" src="" alt=""></div>
+</body>
+</html>
+<script src="./utils.js"></script>
+<script>
+//图片露出一半的时候 把图片地址换成真实地址
+//屏幕底边到body的偏移量changeT 跟 元素顶边到body的偏移量T进行对比
+//当changeT大于了T说明元素的顶边已经暴露了
+//露出一半 changeT>T+height/2
+var img = document.getElementById('img');
+window.onscroll =function(){
+    utils.loadImg(img)
+}
+</script>   

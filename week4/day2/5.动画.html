@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            left:0px;
+            border:1px solid salmon;
+            text-align: center;
+            line-height: 200px;
+            user-select: none;
+            position: relative;
+            /* transition: all 2s cubic-bezier(1,-0.01, 0, 1.03); */
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        珠峰培训
+    </div>
+</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    //getComputedStyle(box);获取元素的所有样式
+    //box.currentStyle  ie 低版本识别
+    //window.onresize = function(){}//监听窗口大小的改变
+    let box = document.getElementById('box');
+    // box.onclick = function(){
+    //     let a = document.documentElement.clientWidth||document.body.clientWidth;
+    //     let n=0;
+    //     let timer = setInterval(()=>{
+    //         n+=5;
+    //         if(n>=a-box.offsetWidth){
+    //             n=a-box.offsetWidth
+    //             setInterval(timer)
+    //         }
+    //         box.style.left = n+'px';
+    //     },10)
+    // }
+    let n=0;
+    function fn(){
+        let a = document.documentElement.clientWidth||document.body.clientWidth;
+        n+=5;
+        if(n>=a-box.offsetWidth){
+                n=a-box.offsetWidth
+                return;
+        }else{
+        //     setTimeout(()=>{
+        //     fn()
+           
+        // },10)
+        requestAnimationFrame(fn)
+        }
+        // requestAnimationFrame()
+      
+        box.style.left = n+'px';
+    }
+   fn()
+
+window.onresize = function(){
+
+    fn()
+}
+
+
+// box.onclick = function(){
+//     let a = document.documentElement.clientWidth||document.body.clientWidth;
+//     box.style.left = a-box.offsetWidth+'px';
+// }
+</script>

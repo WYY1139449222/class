@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            * {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+    
+            #box {
+                width: 200px;
+                height: 200px;
+                background: salmon;
+                position: relative;
+                left:100px;
+                /* animation: move 2s linear infinite; */
+            }
+    
+            @keyframes move {
+                0% {
+                    left: 0px;
+                }
+    
+                50% {
+                    left: 300px;
+                }
+    
+                100% {
+                    left: 0px;
+                }
+            }
+        </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    //要移动的距离
+    //要移动的位置
+    //要移动的方向
+    //要移动的时间
+    function move(ele,attr,duration,target){
+        //要移动的距离  目标位置-初始位置
+        let start = parseFloat(getComputedStyle(ele)[attr]);
+        // let changeL = target - start;
+        // let speed = changeL/duration;
+        // let n = start;
+        let time = 0;
+        let timer = setInterval(() => {
+            // n+=speed*20;
+            time+=20;
+            let n = linear(start,target,duration,time)
+            if(n>=target){
+                // n=target;
+                clearTimeout(timer)
+            }
+           
+            ele.style[attr] = n+'px';
+            ele.style.top= n+'px';
+            console.log(n);
+            
+        }, 20);
+    }
+
+    function linear(bagin,target,duration,time){
+        //bagin 初始值、
+        //target 目标值
+        //duration 运动总时间
+        //time 当前运动过的时间
+        //由以上四个值 我们可以算出元素当前的位置
+        return (target-bagin)/duration*time+bagin
+
+    }
+    let box = document.getElementById('box');
+    move(box,'left',1000,500);//1s内向右移动 500像素
+</script>

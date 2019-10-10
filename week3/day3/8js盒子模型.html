@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #box{
+        width: 200px;
+        height: 200px;
+        padding: 20px;
+        background: #ccc;
+        border: 10px solid red;
+        overflow: hidden;
+        margin:30px auto;
+    }
+    </style>
+</head>
+<body>
+    <div id="box">
+            你在电脑前看这段文字，
+            写文字的人在百度等你。
+            N年前你来到了这个世界，
+            N年后你想改变世界。
+            
+            期待你脚踏祥云，
+            与百度一起改变世界
+            你在电脑前看这段文字，
+写文字的人在百度等你。
+N年前你来到了这个世界，
+N年后你想改变世界。
+
+期待你脚踏祥云，
+与百度一起改变世界
+你在电脑前看这段文字，
+写文字的人在百度等你。
+N年前你来到了这个世界，
+N年后你想改变世界。
+
+期待你脚踏祥云，
+与百度一起改变世界
+期待你脚踏祥云，
+与百度一起改变世界
+
+    </div>
+</body>
+</html>
+<script>
+
+    //js盒子模型的三个系列  client  offset scroll
+    let box = document.getElementById('box')
+    console.log(box.clientHeight);//盒子的高度加上下的 padding
+    console.log(box.clientWidth);//盒子的宽度加上左右的 padding
+    console.log(box.clientLeft);//左边框的宽度
+    console.log(box.clientTop);//上边框的宽度
+    
+
+    console.log(box.offsetHeight);//clientHeight  加上上下border
+    console.log(box.offsetWidth);//盒子的宽度加上左右的 padding
+    console.log(box.offsetTop);//当前元素的外边框到上级参照物的内边框的偏移量
+    console.log(box.offsetLeft);//
+    
+    console.log(box.offsetParent);//上级参照物 指的时上级有定位的那一级元素，若都没有定位，则直接找到body
+    
+    console.log(box.scrollWidth);//再没有内容溢出的情况 等同于client ；内容溢出 但是盒子没有设置overflow属性 那么值是宽度加上左padding
+    //设置了overflow属性 值就是  内容宽度加上左右padding
+    console.log(box.scrollHeight);
+    console.log(box.scrollLeft);//代表卷去的内容的宽度
+    console.log(box.scrollTop);//代表卷曲的内容的高度a
+    
+    
+    
+</script>

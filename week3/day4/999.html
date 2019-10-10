@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+    var reg = /(\d)(?=(\d)$)/g
+    var str = '22111123'
+    function money(str) {
+        var ary1 = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖']
+        let ary2 = ['元', '拾', '佰', '仟', '万', '亿']
+        let ary3 = ['角','分']
+        let l='',f='',s='',d='';
+        str = str.replace(/\d/g, a => ary1[a])
+        if(str.indexOf('.') < 0){
+           l=str
+        }else{
+            l = str.slice(0,str.indexOf('.'))
+            f = str.slice(str.indexOf('.')+1)
+        }
+            let arr = l.split('').reverse()
+            for (let i = 0; i < arr.length; i++) {
+                if (i < 5) {
+                    arr[i] = arr[i] + ary2[i]
+                } else if (i < 8) {
+                    arr[i] = arr[i] + ary2[i - 4]
+                }else if(i<9){
+                    arr[8] = arr[8] + ary2[5]
+                }else if(i<12){
+                    arr[i] = arr[i] + ary2[i - 8]
+                }
+            }
+            s = arr.reverse().join('')
+            let arrr = f.split('')
+            for (let k = 0; k < arrr.length; k++) {
+                arrr[k] = arrr[k] + ary3[k]
+            }
+            d = arrr.join('')
+            return f.length?s+d:s + '整'
+    }
+    money(str)
+</script>

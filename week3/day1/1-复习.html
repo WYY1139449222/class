@@ -1,19 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
 <script>
     /*
         面向对象
         面向过程
-        
+        单例  高级单例  工厂模式 构造函数模式 原型模式
+
+        每一个函数（类）都有一个默认的prototype指向自己的原型对象
+        每一个对象（实例）都有一个默认的__peoto__指向自己所属类的原型对象
+        每一个默认的原型对象 都有一个自带的constructor指向自己的构造函数本身
+
+        原型链 属性的查找机制 先在自己身上查找对应的属性 没有的话 就会__proto__查找所属类的原型
+
+        function的三种角色
+        普通对象 构造函数 普通函数
+        Array.from
+
+        class 类名{
+            constructor（形参）{
+                函数体
+            }
+            static 私有属性//类名.fn = function(){}
+
+            原 型:函数
+        }
     */
+    // class Person {
+    //     constructor() {
+    //         this.name = name;
+    //     };
+    //     say() {
+    //         console.log(666);
+    //     };
+
+    //     static fn() {
+    //         console.log(555);
+
+    //     };
+    //     static fn3() {
+
+    //     }
+    //     static qqq = 123;
+    // }
+    // let p = new Person();
+    // console.log(p);
+
+    // class Child extends Person {
+    //     constructor(name) {
+    //         super();
+    //         this.name = name;
+    //     }
+    // }
+    // let p2 = new Child()
+    // console.log(p2);
+
+    // function Man() {
+
+    // }
+    // function Boy() {
+    //     Man.call(this)//私有属性继承
+    // }
+    // Boy.prototype = Object.create(Man.prototype);//共有属性继承
+    // //class继承  Boy.prototype.__proto__ = Man.prototype
+
+//     let ary = [1,3,5,6,8,9];
+
+// Array.prototype.del = function(n){
+//     n>this.length?n=this.length:null;
+//     let arr= []
+//     for (let i = 0; i < n; i++) {
+//         let a = Math.round(Math.random()*(this.length-1))
+//         let b = this.splice(a,1)
+//         arr = arr.concat(b)
+//     }
+//     return arr
+// }
+
+//     console.log(ary.del(49));
+
+
+//再字符串的原型上 补一个方法 getParam(url)该方法可以获取 url中的参数部分及hash部分
+var str = 'https:baidu.com?a=12&bb=13&_c=14V#hello';
+
+   
+
+    String.prototype.getParam = function(){
+        let obj = {};
+        obj.hash = this.slice(this.indexOf('#')+1)
+        let ary = this.slice(this.indexOf('?')+1,this.indexOf('#')).split('&')
+        ary.forEach((item,index) => {
+            obj[item.split('=')[0]]=item.split('=')[1]
+        });
+        return obj
+    }
+    console.log(str.getParam());
+    //{a:12,bb:13,_c":"14V,hash:hello}
 </script>

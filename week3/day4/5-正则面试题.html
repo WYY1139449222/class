@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // 一个字符串中出现次数最多的字符
+    var str = 'qwerwi'
+   
+    function getMax(str){
+        let obj = {};
+        for (let i = 0; i < str.length; i++) {
+           if(obj.hasOwnProperty(str[i])){
+               obj[str[i]]++
+           }else{
+               obj[str[i]]=1
+           }
+        }
+        console.log(obj);
+        
+        var num=0,k = '';
+            for (const key in obj) {
+               if(obj[key]>num){
+                   num=obj[key]
+                   k = key
+                }
+            }
+        return {
+            k,num
+        }
+    }
+    function getMax2(str){
+        str = str.split('').sort().join('');
+        let reg = /(\w)\1*/g;
+        var ary = str.match(reg);
+      
+        let n=0,s='';
+        for (let i = 0; i < ary.length; i++) {
+            if(ary[i].length>n){
+                n = ary[i].length
+                s = ary[i][0]
+            }
+        }
+        return {
+            s,n
+        }
+    }
+    function getMax3(str){
+        str = str.split('').sort().join('');
+        let reg = /(\w)\1*/g;
+        let n=0,s='';
+        var arr = str.replace(reg,function(a,b){
+            if(a.length>n){
+                n = a.length
+                s = b
+            }
+        })
+        return {
+            s,n
+        }
+    }
+    getMax2(str)
+
+    //2、大小写反转
+    var str = 'Hello World';
+    function turn(str){
+        //方法1
+        // return str.replace(/\w/g,function(a){
+        //     return a.toLowerCase()==a?a.toUpperCase():a.toLowerCase();  
+        // })
+        //方法2
+        var reg = /([A-Z]*)([a-z]*)/g
+        return str.replace(reg,function(a,b,c){
+            return b.toLowerCase()+c.toUpperCase()
+        })
+    }
+
+    //小写数字转大写
+    var str = '今年是2017年'
+    var ary = ['零', '壹', '贰', '叁', '肆', '伍', '陆','柒', '捌', '玖', '拾'];
+    
+    let a = str.replace(/\d/g,a=>ary[a])
+    console.log(a);
+    //思考人民币转大写
+ 
+     // 4、模板引擎
+    var str = '姓名是：{{name}}，年龄是：{{age}}，性别是{{sex}}';
+    var data = {
+        name:"小明",
+        age:10,
+        sex:"男"
+    }
+    function formate(template,data){
+       return template.replace(/\{\{(\w*)\}\}/g,function(a,b){
+            return data[b]
+        })
+    }
+    formate(str,data)
+    //5 千分符
+    function formateMoney(str){
+        str = str.split('').reverse().join('');
+        let s = '';
+        for(let i = 0 ; i < str.length; i++){
+            if(i%3==2){
+                s += str[i]+','
+            }else{
+                s += str[i]
+            }
+        }
+        s = s.split('').reverse().join('');
+        return s.replace(/^,/,'');
+    }
+    var str = '123456';
+
+    function formateMoney2(str){
+        // var reg = /(\d{1,3})(?=(\d{3})+$)/;
+        // return str.replace(reg,'$1,')
+        var reg = /\d{1,3}(?=(\d{3})+$)/g;
+        return str.replace(reg,function(a){
+            return a+','
+        })
+    }
+</script>

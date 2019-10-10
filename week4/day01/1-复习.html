@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" id="inp">
+</body>
+
+</html>
+<script>
+    let n = 0;
+    inp.oninput = function () {
+        let str = this.value;
+        if (str.length >= n) {
+            n = str.length;
+            if ( str.length== 4 || str.length == 9) {
+                str = str.slice(0,str.length-1)+' '+str[str.length-1];
+            }
+            if (str.length >= 13) str = str.slice(0, 13)
+            this.value = str;
+        }else{
+            n=str.length;
+            if(str.length == 4 || str.length == 9){
+                str=str.slice(0,str.length-1)
+            }   
+            this.value = str;
+        }
+    }
+</script>
+<script>
+    /*
+        正则
+        var reg = /\d/g
+        var reg = new RegExp('\\d','g')
+
+        匹配  test
+        捕获   exec
+        \d \D \w \W  \  .  [ab] [a-z] [^a-z] ^ $ [.] | () \s \n \b
+        + ? * {n} {n,} {n,m}
+        i  ignoreCase
+        m   mutiline
+        g   global
+    */
+</script>

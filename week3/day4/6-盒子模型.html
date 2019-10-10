@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //client offset scroll width height  left top parent
+    //clientwidth 内容+左右padding
+    //clienttop 上边框宽度
+    //offsetwidth client+左右border 
+    // offestTop 当前盒子的外边框到上级参照物的内边框的偏移量
+    //offsetParent  上级参照物 有定位的上级元素 终极为body
+    //scroll 内容不溢出 等同于 client
+                // 内容溢出时 没有设置overflow 值时内容宽高+上或左padding
+                // 内容溢出时 设置overflow 值时内容宽高+上下或左右padding
+                // 13个属性 只有scrollTop 和scrollLeft可以修改
+    function offset(ele){
+        let l = ele.offsetLeft;
+        let t = ele.offsetTop;
+        let temp = ele.offsetParent;
+        while(temp){
+            l+=temp.clientLeft+temp.offsetLeft
+            t+=temp.clientTop+temp.offsetTop
+        }
+        return{
+            l,t
+        }
+    }
+</script>

@@ -106,18 +106,15 @@
     // console.log(f1.hasOwnProperty('b'));
     // console.log('b' in f1);
     // console.log(f1.constructor == Fn);
-    //     var url="locallhost?key1=val1&key2=vawwel2&key3=val3";
-    //     String.prototype.getParam = function(b){
-
-    //         let a = this.indexOf(b)+b.length+1;
-    //         console.log(a);
-    //         if(this.indexOf('&')==-1){
-    //             let res = this.slice(a)
-    //         }
-    //         let res = this.slice(a,this.indexOf('&',a))
-    //         return res
-    //     }
-    // console.log(url.getParam("key3")); //=>'val3'
+        var url="locallhost?key1=val1&key2=vawwel2&key3=val3";
+        String.prototype.getParam = function(b){
+            let a = this.indexOf(b)+b.length+1;
+            let res = null;
+            if(this.indexOf('&')==-1) res = this.slice(a)
+            res = this.slice(a,this.indexOf('&',a))
+            return res
+        }
+    console.log(url.getParam("key3")); //=>'val3'
 
 
 

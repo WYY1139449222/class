@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="inp">
+    <button id="btn">解析</button>
+    <div id="box">这个人的出生年月是1998年03月03日 性别男</div>
+</body>
+</html>
+<script>
+    // let str = '123457189003024311'
+    // let reg = /^\d{6}(\d{4})(\d{2})(\d{2})\d{2}(\d{1})(\d|X)$/
+    // // console.log(reg.exec(str));
+    // btn.onclick = function(){
+    //   let   str = inp.value
+    //     let res = reg.exec(str)
+    //     if(res){
+    //         let stt;
+    //         res[4]%2==0?stt='女':stt='男'
+    //         box.innerText = `这个人的出生年月是 ${res[1]}年${res[2]}月${res[3]}日 性别${stt}`
+    //     }else{
+    //         alert('身份证不合法')
+    //     }
+    // }
+    
+    //[object String]
+
+    Object.prototype.getType = function(){
+        let str = Object.prototype.toString.call(this);
+        let reg = /^.{8}(\w+)]$/
+        return reg.exec(str)[1].toLowerCase();
+    }
+    console.log(''.getType());
+</script> 

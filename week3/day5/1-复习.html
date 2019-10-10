@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    /*
+        正则：匹配test  捕获exec
+            字面量 var reg = /q/
+            构造函数 var reg = new RegExp('q','g')
+        特殊元字符
+            \d
+            \w
+            \
+            .
+            \s
+            \n
+            ^
+            $
+            [ab]
+            [^ab]
+            [.]
+            [-]
+            [a-b]
+
+
+    */
+    //捕获 ：把字符串中符合正则的部分获取到 
+    //贪婪性 
+    var reg = /(\d+?)/;
+    var str = 'zf2019zf3456'
+    console.log(reg.exec(str));
+
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            height: 4000px;
+            background: -webkit-linear-gradient(red,pink,yellow,green,skyblue,blue,#fff)
+        }
+        #btn{
+            width: 200px;height: 200px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 200px;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            user-select: none;
+            background: #424242;
+            color: #fff;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <div id="btn">
+        回到顶部
+    </div>
+</body>
+</html>
+<script>
+    var btn = document.getElementById('btn')
+    var timer = null; 
+    btn.onclick = function(){
+        
+        timer = window.setInterval(()=>{
+            !document.documentElement.scrollTop?clearInterval(timer):null;
+            document.documentElement.scrollTop -=20
+        },10)
+    }
+    //onscroll监听滚动事件
+    //onmousewheel
+    window.onmousewheel = function(){
+        console.log(document.documentElement.scrollTop);
+        clearInterval(timer)
+        
+    }
+</script>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    //exec
+    //返回结果若有就是个数组，没有就是null；数组中的第一项永远就是大正则捕获的内容 第二项及以后都是正则小分组捕获的内容
+    // var reg = /(\d)+/
+    // var str = 'zf2019zf2020'
+
+    // reg.exec(str)//2019
+    // //贪婪性  +*{n,m} {n,} 后面加? 即可解决
+    // //懒惰性 添加全局修饰符 g
+    // // 给正则添加g之后，每一次匹配或者捕获之后，都会影响 更改正则的lastIndex属性
+    // // 这个属性是下一次真个开始匹配的索引
+
+    RegExp.prototype.execAll = function(str){
+        //this就是正则
+        let _this = this;
+        if (!this.global) _this = eval(_this+'g')
+        let ary = []
+        let res = _this.exec(str)
+        while(res){     
+            ary.push(res)
+            res = _this.exec(str)
+        }
+        return ary.length?ary:null;
+    }
+    var reg = /\d+/g
+    reg.execAll()
+
+    // //cookie
+    // var str = "sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%2216a91b2f43c43-00b58455a87b27-3c644d0e-921600-16a91b2f43d2e%22%2C%22%24device_id%22%3A%2216a91b2f43c43-00b58455a87b27-3c644d0e-921600-16a91b2f43d2e%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E7%9B%B4%E6%8E%A5%E6%B5%81%E9%87%8F%22%2C%22%24latest_referrer%22%3A%22%22%2C%22%24latest_referrer_host%22%3A%22%22%2C%22%24latest_search_keyword%22%3A%22%E6%9C%AA%E5%8F%96%E5%88%B0%E5%80%BC_%E7%9B%B4%E6%8E%A5%E6%89%93%E5%BC%80%22%7D%7D; SUV=1905080941067530; smidV2=2019050809410405042f2e419b3817ca725be23bd4533a00189265daef61150; IPLOC=CN1101; Hm_lvt_51bfa68f6bea432417d90d76280e520f=1567495209,1567734865,1568944687,1569297722; u_main=1044afcba5c47c90b47f9c3f96fd05d2; u_www_souyidai_com=b7c425bb61fce275185c06e83e67f393"
+    // function getCookie(){
+    //     let obj = {}
+    //     var str =document.cookie;
+    //     let reg = /([^\;\?\=\s]+)=([^\;\?\=\s]+)/g
+    //     let ary = reg.execAll(str)
+    //     ary.forEach(a => {
+    //         obj[a[1]] = a[2]
+        
+    //     });
+    //     return obj;
+        
+    // }
+    // getCookie()
+function getMax(str){
+    let obj = {}
+    for (let i = 0; i < str.length; i++) {
+        if(obj.hasOwnProperty(str[i])){
+            obj[str[i]]++
+        }
+        obj[str[i]]=1
+    }
+    let n=0,s='';
+    for (const key in obj) {
+      if (obj[key]>n) {
+          n=obj[key]
+          s=key
+      }
+    }
+    return {
+        n,s
+    }
+}
+function getMax2(str){
+    str = str.split('').sort().join('')
+    var reg = /(\w)\1*/g
+    var obj={}
+    var ary = str.match(reg).sort((a,b)=>{
+        b.length-a.length
+    })
+    let n = ary[0].length
+    let s = ary[0][0]
+    return {
+        s,n
+    }
+}
+function getMax3(str){
+    str = str.split('').sort().join('')
+    var reg = /(\w)\1*/g
+    var obj={}
+    let n=0,s='';
+    str.replace(reg,function(a,b){
+        if(a>n){
+            n=a.length
+            s=b
+            }
+    })
+    return {
+        s,n
+    }
+}
+function turn(str){
+    return str.replace(/\w/g,function(a){
+        return a.toLowerCase()==a?a.toUpperCase():a.toLowerCase()
+    })
+    var reg = /([A-Z]*)([a-z]*)/g
+    return str.replace(reg,function(a,b,c){
+        return b.toLowerCase()+c.toUpperCase()
+    })
+}
+function formateMoney(str){
+    str=str.split('').reverse().join('')
+    let s=''
+    for (let i = 0; i < str.length; i++) {
+        if(i%3==2){
+          s+=  str.replace(str[i],str[i]+',')
+        }    
+        s+=str[i]    
+    }
+    return s.split('').reverse().join('').repeat(/^,/,'')
+}
+
+function formateMoney(str){
+  return  str.replace(/(\w{1,3})(?=(\w{3})+$)/g,function(a){
+        return a+','
+    })
+    pas
+}
+
+</script>

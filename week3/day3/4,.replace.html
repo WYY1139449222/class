@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inp">
+</body>
+</html>
+<script>
+//replace 替换
+// var str = '2019-02-03'
+// console.log(str.replace(/-/g,'/'));
+// var str = '          asdfgh34kqwertyu  io23456qwertyuisdfgh    ';
+// //用正则去除首位空格
+// var res = str.replace(/^\s+|\s+$/g,'')
+// console.log(res);
+
+// inp.oninput = function(){
+//     // if (/^\s+/g.test(this.value)) this.value = ''
+//     if (/^\D|^ /g.test(this.value)) this.value = ''
+// }
+
+// var str = 'aDFGFdgHfgHJfHJfdGHJfGHaa';
+// function lcase(str){
+//     var reg = /[a-z]+/g
+//    str.replace(reg,function(){
+//        console.log(arguments);
+//        return arguments[0].toUpperCase()
+//    })
+//    return str
+// }
+// var reg = /([a-z]*)([A-Z]*)/g
+// var res = str.replace(/([a-z]*)([A-Z]*)/g,($1,$2,$3)=>$2.toUpperCase()+$3.toLowerCase())
+// console.log(res);
+
+        // replace  的回调函数的实参结果 跟 match和exec获取的 类似
+        // 返回的字符串 是由匹配到的内容被return值 替换之后的新字符串
+        // 回调函数的执行次数跟 正则匹配到的次数一样
+        //$1,$2，$3...  分别代表正则的第一个小分组 第二个小分组 第三个....
+
+function getParem(url){
+    let reg = /([^?=&])=([^&?#=]+)/g
+    let obj={}
+    url.replace(reg,function($0,$1,$2){
+        obj[$1] = $2
+    })
+return obj
+}
+var str = 'http://www.zhufengpeixun.cn/?lx=1&from=wx&b=12&c=13#qqqq';
+console.log(getParem(str));
+
+
+</script>

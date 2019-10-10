@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+//match  不加g 和exec功能一样 加g后 match可以把所有大正则匹配的内容都捕获到 会丢掉小正则的捕获
+//match 出来时一个数组
+// var str = 'http://www.zhufengpeixun.cn/?lx=1&from=wx&b=12&c=13';
+// function getParem(str){
+//     var reg = /([^?=&]+)=([^?=&#])/g;
+//     let obj = {};
+//     str.match(reg).forEach(item => {
+//         let a = item.split('=')
+//         obj[a[0]]=a[1]
+//     });
+//     // var reg2 = /(#(.+))?$/
+//     // obj.hash = reg2.exec(str)[2]
+//     obj.hash = str.indexOf('#')>0?str.slice(str.indexOf('#')+1):null;
+//     return obj;
+// }
+// console.log(getParem(str));
+// var str = '   sdfgsg   fsgfsd    ';
+// //使用正则 去除字符串的首位字符
+//     var reg = /^\s*|\s*$/g
+//     console.log(str.replace(reg,''));
+    
+const str = "\
+Windows 1.03 and Windows 2.0 fisrt Released in 1985 and 1987 respectively.\
+Windows 95 and Windows 98 are the successor.\
+Then Windows 2000 and Windows Xp appeared.\
+Windows Vista is the Latest version of the family."
+
+const reg = /Windows (?=[\d.]+\b)/g;
+
+console.log(str.match(reg));
+
+var con="coming soon,going gogogo coming"
+var reg4 = /\b[\w]+(?:ing\b)/g;//匹配带ing的单词，但是不要ing。注意：如果ing后不加\b，类似于goingabc也会匹配。
+console.log(con.match(reg4));
+const str1 = "aaaax-aaa";
+const reg1 = /(x)(?:[,.\r\n<>;\-])/g;
+console.log(str1.replace(reg1, function($$, $$$,$) {
+    console.log($$,$$$,$);
+    console.log(arguments);
+    return $$$;
+}));
+var con="ing coming sooingn,going gogogo coming"
+var reg4 = /\b[\w]+(?:ing)\b/g;//匹配带ing的单词，但是不要ing。注意：如果ing后不加\b，类似于goingabc也会匹配。
+console.log(con.match(reg4));
+
+</script>
