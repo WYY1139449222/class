@@ -30,15 +30,3 @@ click(pplis);
 click(cclis);
 click(xtlis);
 click(wllis);
-change.onmouseover = function () {
-    [...noneBox].forEach((item) => {
-        item.onclick = function () {
-            change.removeChild(this.offsetParent);
-        }
-    })
-}
-function sortli() {
-    [...liBox].sort((a, b) => a.flag - b.flag).forEach(item => {
-        change.appendChild(item);
-    })
-}
