@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+</body>
+
+</html>
+<script>
+    let l = 0;
+    let t = 0;
+    var box = document.getElementById('box');
+    window.onkeydown = function (e) {
+        if (e.keyCode == 37) {
+            //zuo
+            l -= 20
+        } else if (e.keyCode == 38) {
+            //shang
+            t -= 20
+        } else if (e.keyCode == 39) {
+            //you
+            l += 20
+        } else if (e.keyCode == 40) {
+            //xia
+            t += 20
+        }
+        box.style.left = l + 'px'
+        box.style.top = t + 'px'
+    }
+
+</script>

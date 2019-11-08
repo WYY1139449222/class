@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.w {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.hide {
+  display: none;
+}
+html,
+body {
+  font-size: 16px;
+}
+html > section,
+body > section {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+html .loadingBox,
+body .loadingBox {
+  background: #333;
+  z-index: 333;
+  text-align: center;
+  color: #fff;
+  transition: opacity 1s  linear;
+}
+html .loadingBox h1,
+body .loadingBox h1 {
+  font-size: 1rem;
+  position: relative;
+  top: 25%;
+}
+html .loadingBox h2,
+body .loadingBox h2 {
+  font-size: 0.6rem;
+  position: relative;
+  top: 30%;
+}
+html .loadingBox .progressBox,
+body .loadingBox .progressBox {
+  width: 80vw;
+  height: 0.4rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  position: relative;
+  top: 50%;
+  margin: 0 auto;
+  background: #fff;
+}
+html .loadingBox .progressBox .progress,
+body .loadingBox .progressBox .progress {
+  height: 0.4rem;
+  width: 0%;
+  background: linear-gradient(45deg, #6faa6d 0%, #6faa6d 25%, #77c570 25%, #77c570 50%, #6faa6d 50%, #6faa6d 75%, #77c570 75%, #77c570 100%);
+  background-size: 0.4rem 0.4rem;
+  transition: width 1s linear;
+}
+html .phoneBox,
+body .phoneBox {
+  background: url('../images/phone-bg.jpg');
+  background-size: cover;
+  transition: all 0.5s;
+}
+html .phoneBox header,
+body .phoneBox header {
+  color: #fff;
+  text-align: center;
+  position: relative;
+  top: 0.5rem;
+}
+html .phoneBox header h1,
+body .phoneBox header h1 {
+  font-size: 1rem;
+}
+html .phoneBox header h2,
+body .phoneBox header h2 {
+  font-size: 0.3rem;
+}
+html .phoneBox footer,
+body .phoneBox footer {
+  width: 80vw;
+  height: 55vw;
+  background: url('../images/phone-listen.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: 0.2rem;
+  left: 10vw;
+}
+html .phoneBox footer .circle,
+body .phoneBox footer .circle {
+  width: 24vw;
+  height: 24vw;
+  border: 1px solid #77c570;
+  border-radius: 50%;
+  position: absolute;
+  right: -0.4vw;
+  bottom: 7.3vw;
+  animation: move 0.6s linear infinite;
+}
+html .phoneBox .overBox,
+body .phoneBox .overBox {
+  width: 80vw;
+  height: 102vw;
+  background: url('../images/phone-key.png');
+  background-size: contain;
+  position: absolute;
+  bottom: 0.2rem;
+  left: 10vw;
+  transition: all 0.5s;
+}
+html .phoneBox .overBox .overBtn,
+body .phoneBox .overBox .overBtn {
+  position: absolute;
+  width: 26vw;
+  height: 26vw;
+  top: 72vw;
+  left: 50%;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+html .phoneBox .bot,
+body .phoneBox .bot {
+  transform: translateY(110%);
+}
+html .chatBox,
+body .chatBox {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #eee;
+  z-index: 10;
+}
+html .chatBox .chatMsgBox,
+body .chatBox .chatMsgBox {
+  padding: 5vw;
+  transition: transform 0.5s;
+}
+html .chatBox .chatMsgBox li,
+body .chatBox .chatMsgBox li {
+  overflow: hidden;
+  margin-bottom: 3vw;
+  transition: all 0.5s linear;
+}
+html .chatBox .chatMsgBox li > div,
+body .chatBox .chatMsgBox li > div {
+  float: left;
+}
+html .chatBox .chatMsgBox li .imgBox,
+body .chatBox .chatMsgBox li .imgBox {
+  width: 13vw;
+  height: 13vw;
+  border-radius: 50%;
+  overflow: hidden;
+}
+html .chatBox .chatMsgBox li .imgBox img,
+body .chatBox .chatMsgBox li .imgBox img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+html .chatBox .chatMsgBox li .msg,
+body .chatBox .chatMsgBox li .msg {
+  max-width: 60vw;
+  margin-left: 4vw;
+  background: #fff;
+  border: 1px solid #eee;
+  box-sizing: border-box;
+  border-radius: 7px;
+  padding: 3.5vw;
+  word-break: break-all;
+}
+html .chatBox .chatMsgBox li .msg::before,
+body .chatBox .chatMsgBox li .msg::before {
+  content: '';
+  display: block;
+  width: 3vw;
+  height: 3vw;
+  border: 1px solid #eee;
+  background: #fff;
+  transform: rotate(45deg) translateX(-2.8vw) translateY(4.5vw);
+  border-color: transparent transparent #eee #eee;
+  position: absolute;
+}
+html .chatBox .chatMsgBox .right,
+body .chatBox .chatMsgBox .right {
+  overflow: hidden;
+}
+html .chatBox .chatMsgBox .right > div,
+body .chatBox .chatMsgBox .right > div {
+  float: right;
+}
+html .chatBox .chatMsgBox .right .msg,
+body .chatBox .chatMsgBox .right .msg {
+  margin-right: 4vw;
+  background: greenyellow;
+}
+html .chatBox .chatMsgBox .right .msg::before,
+body .chatBox .chatMsgBox .right .msg::before {
+  border: 1px solid #eee;
+  background: greenyellow;
+  transform: rotate(45deg) translateX(-2.8vw) translateY(4.5vw);
+  border-color: #eee #eee transparent transparent;
+  position: absolute;
+  right: 15.5vw;
+}
+html .chatBox .chatMsgBox li.opa,
+body .chatBox .chatMsgBox li.opa {
+  transform: translateY(0.5rem);
+  opacity: 0;
+}
+html .chatBox .keyboard,
+body .chatBox .keyboard {
+  width: 100%;
+  height: 6.05rem;
+  background: url('../images/message-keyboard.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  bottom: -0.5rem;
+  transition: transform 0.5s linear;
+}
+html .chatBox .keyboard .chatBtn,
+body .chatBox .keyboard .chatBtn {
+  position: absolute;
+  bottom: 0.69rem;
+  right: 0.15rem;
+  background: url('../images//message-chatBtn.png') no-repeat;
+  width: 1.7rem;
+  height: 0.86rem;
+  background-size: contain;
+}
+html .chatBox .keyboard p,
+body .chatBox .keyboard p {
+  height: 0.5rem;
+  width: 4.8rem;
+  position: absolute;
+  left: 1rem;
+  top: 0.45rem;
+}
+html .chatBox .bot,
+body .chatBox .bot {
+  transform: translateY(4.4rem);
+}
+@keyframes move {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}

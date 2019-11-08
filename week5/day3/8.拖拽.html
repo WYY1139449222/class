@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .st{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: orangered;
+            cursor: move;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="st"></div>
+    <div id="box2" class="st"></div>
+    <div id="box3" class="st"></div>
+    <div id="box4" class="st"></div>
+    <div id="box5" class="st"></div>
+    <div id="box6" class="st"></div>
+    <div id="box7" class="st"></div>
+    <div id="box8" class="st"></div>
+</body>
+</html>
+<script>
+    // let box = document.getElementById('box');
+    // //鼠标按下 决定盒子可以跟随鼠标移动 鼠标抬起 盒子停止跟随
+    // function offset(ele){
+    //     let l = ele.offsetLeft;
+    //     let t = ele.offsetTop;
+    //     let temp = ele.offsetParent;
+    //     while(temp){
+    //         l+=temp.offsetLeft+temp.clientLeft;
+    //         t+=temp.offsetTop+temp.clientTop;
+    //         temp  = temp.offsetParent;
+    //     }
+    //     return {
+    //         l,t
+    //     }
+    // }
+    // function move(e){
+    //    this.style.left = e.pageX-this.l+'px';
+    //    this.style.top = e.pageY-this.t+'px';
+        
+    // }
+    // box.addEventListener('mousedown',function(e){
+    //     this.l = e.pageX-offset(this).l
+    //     this.t = e.pageY-offset(this).t
+    //     this.fn =move.bind(this)
+    //     document.addEventListener('mousemove',this.fn,false)
+    // },false);
+   
+    // box.addEventListener('mouseup',function(e){
+    //     document.removeEventListener('mousemove',this.fn,false);
+    
+    // },false)
+    
+function Move(selsecor){
+    this.box = document.querySelector(selsecor);
+    let _this = this
+    this.box.addEventListener('mousedown',function(e){
+        this.style.zIndex = 2;
+        this.l = e.pageX-_this.offset(this).l
+        this.t = e.pageY-_this.offset(this).t
+        _this.fn =_this.move.bind(this)
+        document.addEventListener('mousemove',_this.fn,false)
+    },false);
+   
+    this.box.addEventListener('mouseup',function(e){
+        document.removeEventListener('mousemove',_this.fn,false);
+    
+    },false)
+    }
+    Move.prototype.offset = function(ele){
+        let l = ele.offsetLeft;
+        let t = ele.offsetTop;
+        let temp = ele.offsetParent;
+        while(temp){
+            l+=temp.offsetLeft+temp.clientLeft;
+            t+=temp.offsetTop+temp.clientTop;
+            temp  = temp.offsetParent;
+        }
+        return {
+            l,t
+        }
+    }
+    Move.prototype.move = function(e){
+        //this 是当前的实例
+        this.style.left = e.pageX-this.l+'px';
+        this.style.top = e.pageY-this.t+'px';
+    }
+    new Move('#box')
+    new Move('#box2')
+    new Move('#box3')
+    new Move('#box4')
+    new Move('#box5')
+    new Move('#box6')
+    new Move('#box7')
+    new Move('#box8')
+</script>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #box{
+        width: 200px;
+        height: 200px;
+        margin:50px auto;
+        background: orangered;
+    }
+    *{
+            margin: 0;
+            padding: 0;
+        }
+        #outer{
+            width: 500px;
+            height: 500px;
+            background: red;
+            margin: 50px auto;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        #center{
+            width: 400px;
+            height: 400px;
+            background: blue;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        #inner{
+            width: 300px;
+            height: 300px;
+            background: orangered;
+            box-sizing: border-box;
+            
+        }
+    </style>
+</head>
+<body>
+        <div id="outer">
+                <div id="center">
+                    <div id="inner">
+        
+                    </div>
+                </div>
+            </div>
+</body>
+</html>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+
+// let $box = $('#box')
+// let box = document.getElementById('box');
+//DOM 0 级事件绑定
+// box.onclick = function(){
+//     console.log(666);
+    
+// }
+// //JQ利用DOM二级事件绑定
+// $box.on('click',function(){
+//     console.log(2345);
+    
+// })
+// $box.on('click',function(){
+//     console.log(6665);
+    
+// })
+var outer = document.getElementById('outer');
+var center = document.getElementById('center');
+var inner = document.getElementById('inner');
+// outer.addEventListener('click',function(){
+//     console.log(1111);
+    
+// })
+// outer.addEventListener('click',function(){
+//     console.log(1111111);
+    
+// })
+// outer.addEventListener('click',function(){
+//     console.log(111111111111);
+    
+// })
+
+// //false 代表对应的函数需要在冒泡出发 true代表的函数需要在捕获阶段触发；一般都是false
+// // outer.attachEvent('onclick',function(){})
+// center.addEventListener('click',function(){
+//     console.log(222);
+    
+// })
+// inner.addEventListener('click',function(){
+//     console.log(333);
+    
+// })
+// function f(e){
+//     console.log(121212,e.target);
+    
+// }
+// inner.addEventListener('click',f,false)
+// inner.removeEventListener('click',f,false)
+
+/*
+    DOM 二级事件绑定  元素.addEventListener('事件类型'，回调函数，冒泡阶段或捕获阶段)
+                         .attachEvent('on事件类型'，回调函数)  detachEvent('on事件类型'，回调函数)
+        二级事件的同一个元素的同一个事件 可以绑定多个回调函数
+*/
+Element.prototype.one = function(type,cb){
+   function fn(e){
+       cb.call(this,e);
+       this.removeEventListener(type,fn,false);
+   }
+   this.addEventListener(type,fn,false)
+}
+
+inner.one('click',function(e){
+    console.log('one');
+})
+</script>

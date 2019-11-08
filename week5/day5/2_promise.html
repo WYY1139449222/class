@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    [].forEach(function(item,index){
+
+})
+let p = new Promise(function(resolve,reject){
+    // executor 函数
+    console.log(resolve,reject)
+    resolve(234);
+    console.log(ewewe);
+    
+});
+
+p.then(function(data){
+    //res
+    console.log(data);
+    
+},function(error){
+    //rej
+    console.log(err);
+    
+}).catch(err=>{
+    console.log('catch',err);
+    
+}).finally(()=>{
+    console.log(789);
+    
+})
+
+Promise.all([p1,p2,p3]).then(()=>{},()=>{});
+Promise.resolve('chenggong').then(()=>{});
+Promise.reject('失败').then(()=>{},()=>{});
+Promise.race([p1,p2,p3]).then(()=>{},()=>{});
+
+</script>

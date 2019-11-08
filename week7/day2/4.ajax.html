@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    // ajax  async  javascript  and xml
+    //readyState 代表http的请求状态
+   /*               0  unsent 未发送 
+                    1   opend 已执行过open函数
+                    2   headers_received 已经接受响应头
+                    3   loading  正在加载响应体
+                    4   done 请求完成
+
+
+                    0~1 是由前端控制的
+                    1-2 2-3 3-4 都是http控制的
+    */
+
+    let xhr = new XMLHttpRequest();
+     xhr.open('get','./data.xml',false);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState==4 && xhr.status==200){
+            // box.appendChild(xhr.responseXML.firstChild)
+            console.log(xhr.response);
+            box.innerHTML = xhr.response;
+            
+        }
+    }
+    // xhr.timeout=1000;
+    // xhr.ontimeout = function(){
+    //     //超时
+    // }
+    // xhr.onabort = function(){
+    //     //手动打断请求
+    //     console.log('daduan');
+        
+    // }
+    // xhr.onerror = function(e){
+    //     console.log(12);
+        
+    // }
+   
+   
+    xhr.send();
+    // xhr.abort();//主动打断Http请求 请求没有完成的时候 可以打断 
+</script>

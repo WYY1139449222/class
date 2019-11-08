@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #litImg{
+            width: 400px;
+            height: 200px;
+        }
+        .litImg {
+            width: 400px;
+            height: 200px;
+        }
+
+        #bigImg {
+            position: absolute;
+            left: 500px;
+            top: 0;
+            border: 1px solid salmon;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .bigImg {
+            width: 800px;
+            height: 400px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #box {
+            width: 160px;
+            height: 160px;
+            background: rgba(166, 107, 243, 0.2);
+            position: absolute;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="litImg">
+        <img src="../day1/渐隐渐显轮播图/img/1.jpg" alt="" class="litImg">
+        <div id="box"></div>
+    </div>
+
+    <div id="bigImg">
+        <img src="../day1/渐隐渐显轮播图/img/1.jpg" alt="" class="bigImg">
+    </div>
+</body>
+
+</html>
+<script>
+    let litImg = document.getElementById('litImg');
+    let litImgs = document.getElementsByClassName('litImg')[0];
+    let bigImg = document.getElementById('bigImg');
+    let bigImgs = document.getElementsByClassName('bigImg')[0];
+    let box = document.getElementById('box');
+
+    litImg.onmouseenter = function (e) {
+        box.style.display = 'block';
+        bigImg.style.display = 'block';
+    }
+    litImg.onmousemove = function (e) {
+            box.style.left = e.pageX - 80 + 'px';
+            box.style.top = e.pageY - 80 + 'px';
+            // if(e.pageX>320&&e.pageY>120){
+            //     box.style.left = 240+ 'px';
+            //     box.style.top =40 + 'px';
+            // }
+            
+            if(e.pageY>120){
+                box.style.top =40 + 'px';
+            }
+            if(e.pageX>320){
+                box.style.left = 240+ 'px';
+            }
+            if(e.pageX<80){
+                box.style.left = 0+ 'px';
+            }
+            if(e.pageY<80){
+                box.style.top =0 + 'px';
+            }
+            
+            
+            bigImgs.style.left =-0.5*e.pageX+'px'
+            bigImgs.style.top =-0.5*e.pageY+'px'
+        }
+        litImg.onmouseleave = function(){
+            box.style.display = 'none';
+            bigImg.style.display = 'none';
+        }
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: salmon;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<script>
+    // 拖拽
+    // 鼠标按下 记录盒子的初始位置 和鼠标初始位置
+    //鼠标移动 盒子跟着鼠标移动 鼠标当前位置 - 鼠标的初始位置 + 盒子的初始位置 === 盒子当前位置
+    //鼠标抬起 盒子停止跟随
+</script>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+    var box = document.getElementById('box');
+    box.onmousedown = function(e){
+        this.startX = $(this).offset().left;
+        this.startY = $(this).offset().top;
+        this.spx = e.pageX;
+        this.spy = e.pageY;
+        document.onmousemove = move.bind(this)
+        document.onmouseup = function(){
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
+    function move(e){
+        this.style.left = e.pageX-this.spx+this.startX+'px';
+        this.style.top = e.pageY-this.spy+this.startY+'px';
+    }
+    //setCapture 火狐浏览器防止鼠标丢失的
+</script>

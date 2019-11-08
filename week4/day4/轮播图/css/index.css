@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#box,#box2{
+    width: 590px;
+    height: 470px;
+    position: relative;
+    margin: 30px auto;
+    box-sizing: border-box;
+    border:1px dotted aqua;
+}
+.img_box{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.img_box ul{
+    width: 2360px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    left:0;
+}
+.img_box li{
+    float: left;
+    width: 590px;
+    height: 470px;
+    position: relative;
+}
+.img_box li:hover img{
+    transform: scale(1.1)
+}
+img{
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s;
+}
+.img_box .desc{
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    bottom:0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color:#fff;
+    text-align: center;
+}
+.tip_box{
+    overflow: hidden;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+}
+.tip{
+    float: left;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 10px;
+    background: red;
+    cursor: pointer;
+}
+.btn_box{
+    position: absolute;
+    width: 100%;
+    height: 0px;
+    margin-top: -30px;
+    top:50%;
+
+}
+.btn_box>div{
+    width: 30px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    background: rgba(228, 130, 120, 0.5);
+    cursor: pointer;
+    border-radius: 5px;
+}
+.left_btn{
+    float: left;
+   
+}
+.right_btn{
+    float: right;
+}
+.tip.current{
+    background: skyblue;
+}

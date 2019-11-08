@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    // let p = new Promise(function (res, rej) {
+
+    // });
+    function MyPromise(executor) {
+        let self = this;//使用变量把this这个当前实例保存起来
+        self.value = undefined;//用来存储成功函数传进来的值
+        self.reason = undefined;//用来存储失败时存储的值
+        self.status = 'pending';//pending  resolved rejected
+        self.resCallback = [];//用来存放成功的回调
+        self.rejCallback = [];//用来存放失败的回调
+        function resolve(value) {
+            if(self.status =='pending'){
+                if(self.value===null){
+                    reject(self.reason);
+                    return;
+                }
+                self.value = value;
+                self.status = 'resolved'
+                self.resCallback.forEach(item=>{
+                self.v =   item(self.value);
+            })
+            }
+        };
+        function reject(reason) {
+            
+            if(self.status =='pending'){
+                if(self.reason===null){
+                resolve(self.value);
+                return
+                }
+                self.reason = reason;
+                self.status = 'rejected'
+                self.rejCallback.forEach(item=>{
+                self.s =  item(self.reason);
+            })
+            }
+        }
+        
+        try {
+            executor(resolve, reject)
+        } catch (error) {
+            reject(error);
+        }
+    };
+    MyPromise.prototype.then = function (res, rej) {
+        let self = this;
+
+        let selfres=null;
+        let selfrej = null;
+        let selfv = self.v;
+        let selfs = self.s;
+        try {
+            if(self.status=='resolved'){
+                selfres = res(self.value)   
+            }
+            if(self.status=='rejected'){
+                selfres =  rej(self.reason)
+            }
+            if(self.status=='pending'){
+                 
+                self.resCallback.push(res);
+                self.rejCallback.push(rej);
+                
+                
+            }
+        } catch (error) {
+            selfrej = error
+        }
+        return new MyPromise(function(res1,rej1){
+            if(self.status=='resolved'){
+                res(selfres)   
+            }
+            if(self.status=='rejected'){
+                rej(selfrej)
+            }
+            if(self.status=='pending'){
+                self.value = selfv;
+                self.reason = selfs;
+                
+                self.resCallback.push(res1);
+                self.rejCallback.push(rej1);
+                
+            }
+
+
+            /* if(self.status=='pending'){
+                self.resCallback.push(res);
+                self.rejCallback.push(rej);
+                self.value = selfres;
+                self.reason = selfrej;
+            }
+            if(selfres!==null){
+                res1(selfres)
+            }else{
+                rej1(selfrej)
+            } */
+          
+        })
+        //需要判断是让res还是rej执行
+        
+    }
+    let myp = new MyPromise(function (res, rej) {
+        // res(666);
+        // rej(111)
+        // console.log(qqq);
+        setTimeout(()=>{
+            res(666)
+        },2000)
+    });
+    myp.then((data) => {
+        console.log(data);
+    }, (err) => {
+        console.log(err);
+    }).then((data)=>{
+        console.log(data);
+    },err=>{
+        console.log(err);
+        
+    })
+</script>

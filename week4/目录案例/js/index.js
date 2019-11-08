@@ -21,9 +21,16 @@ function click(ary) {
                 li.innerText = item.innerText;
                 li.appendChild(div);
                 change.appendChild(li);
-                sortli();
+                [...liBox].sort((a, b) => a.flag - b.flag).forEach(item => {
+                    change.appendChild(item);
+                });
+                [...noneBox].forEach((item) => {
+                    item.onclick = function(){
+                        change.removeChild(this.offsetParent);
+                    }
+                });
             }
-        }
+        };
     });
 }
 click(pplis);

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+            list-style: none;
+        }
+        .year{
+            width: 80px;
+            height: 40px;
+            border-top:1px solid greenyellow;
+            border-bottom:1px solid greenyellow;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+            text-align: center;
+        }
+        .year>ul{
+            width: 80px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .year>ul>li{
+            height: 40px;
+            line-height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="year">
+        <ul>
+            <li>2015年</li>
+            <li>2016年</li>
+            <li>2017年</li>
+            <li>2018年</li>
+            <li>2019年</li>
+        </ul>
+    </div>
+    <div class="manth">
+        <ul>
+            <li>1月</li>
+            <li>2月</li>
+            <li>3月</li>
+            <li>4月</li>
+            <li>5月</li>
+            <li>6月</li>
+            <li>7月</li>
+            <li>8月</li>
+            <li>9月</li>
+            <li>10月</li>
+            <li>11月</li>
+            <li>12月</li>
+        </ul>
+    </div>
+</body>
+</html>
+<script>
+    let year =document.querySelector('.year');
+    let startY;
+    let cy=0,sy=0;
+    let yearul = document.querySelector('.year>ul');
+    let lis = document.querySelectorAll('.year>ul>li');
+    let h = lis[0].clientHeight;
+    year.ontouchstart = function(e){
+        startY = e.touches[0].pageY
+    }
+    document.ontouchmove = function(e){
+        cy = e.changedTouches[0].pageY - startY;
+        yearul.style.top = cy+sy + 'px'
+    }
+    document.ontouchend = function(){
+        sy = cy+sy
+        //松手的时候 需要判断当前的T是不是一个整数个；
+        let n = Math.round(sy/h)
+        n = n>0?0:(n<-4?-4:n)
+        sy = cy+sy
+        yearul.style.top = n*h + 'px'
+
+
+    }
+</script>

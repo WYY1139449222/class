@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        
+        #box{
+            width: 80%;
+            height: 3600px;
+            background: salmon;
+            margin: auto;
+          
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+</html>
+<!-- <script src="https://zeptojs.bootcss.com/zepto-docs.min.js"></script> -->
+<script>
+    var box = document.querySelector('#box');
+    // box.onclick = function(e){
+    //     //click 在移动端有300ms的延迟
+    //     console.log(e);
+        
+    // }
+    // box.ontouchstart = function(e){
+    //     //手指触碰到屏幕
+    //     console.log(e.touches[0].pageX);
+        
+    // }
+    // box.ontouchmove = function(e){
+    //     // console.log(e.touches[0].pageX,e.touches[0].pageY);
+        
+    // }
+    // box.ontouchend = function(e){
+    //     console.log(e);
+    // }
+    // $('#box').tap(function(e){
+    //     console.log(e);
+        
+    // })
+    // $("#box").on("tap",function(e){
+    //     console.log(e);
+        
+    // })
+
+    // Element.prototype.longTab = function(cb){
+    //     let timer = null;
+    //     this.ontouchstart = function(e){
+    //         timer=setTimeout(()=>{
+    //             cb.call(this,e)
+    //         },300)
+    //     }
+    //     this.ontouchend = function(e){
+    //         clearTimeout(timer)
+           
+    //     }
+    // }
+    // box.longTab(function(e){
+    //     console.log(e);
+    // })
+    // Element.prototype.swipeup = function(cb){
+    //     let sy= 0;
+    //     this.ontouchstart = function(e){
+    //         sy = e.touches[0].pageY;
+    //     }
+    //     this.ontouchend = function(e){
+    //         if(sy-e.changedTouches[0].pageY>50){
+    //             cb.call(this,e)
+    //         }
+    //     }
+    // }
+
+    // box.swipeup(function(){
+    //     console.log(111);
+        
+    // })
+        // box.ontouchmove = function(e){
+        //     // e.preventDefault();
+        // }
+        box.addEventListener('touchmove',function(e){
+            e.preventDefault();
+        })
+        //
+</script>

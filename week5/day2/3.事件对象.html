@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            #box{
+                width: 200px;
+                height: 200px;
+                background: #ccc;
+                margin: 50px auto;
+            }
+        </style>
+</head>
+<body>
+    <div id="box">珠峰
+        <span>9090</span>
+    </div>
+    <input type="text" id="inp">
+    <textarea name="" id="text" cols="30" rows="10"></textarea>
+</body>
+</html>
+<script>
+    box.onclick = function(e){
+        // e 是个事件对象 event  
+        e = e ||window.event;//为了兼容IE低版本
+        console.log(e);
+        // e.clientY  鼠标点击的位置到可视窗口左上角的距离
+        // e.pageY  鼠标点击的位置到body左上角的距离
+        console.log(e.target);
+        //e.target e.srcElement  点击的那个元素 事件源  this  绑定的那个元素
+        
+    }
+    inp.onkeydown = function(e){
+        console.log(e.keyCode);
+        
+        if(e.keyCode==13){
+            // alert('提交成功');
+            this.blur()//失焦
+            this.focus()//聚焦
+        }
+
+        
+    }
+</script>

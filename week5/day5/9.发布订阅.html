@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //事件池  订阅 发布 取消订阅
+    let ary = [];
+    function on(f){
+        if(ary.indexOf(f)<0)ary.push(f);
+    }
+    function fire(...arg){
+        ary.forEach(item=>{
+            item.call(this,...arg)
+        })
+    }
+    function off(f){
+        if(ary.indexOf(f)>=0)ary.splice(n,1);
+        
+    }
+
+    ary.forEach(item=>{arr.forEach((a,b)=>{a==item?a.splice(b,1):null})})
+</script>

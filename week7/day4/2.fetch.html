@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="../day3/axios.js"></script>
+<script>
+    /* axios.get('./data.json').then(data=>{
+        console.log('axios',data);
+        
+    },err=>{
+        console.log('axios',err);
+        
+    }) */
+
+    //fetch  默认get  传参需要自己拼接url
+   /*  fetch('./data.json').then((data)=>{
+        console.log('fetch',data);
+        return data.json()
+        
+    },err=>{
+        console.log('fetch',err);
+        
+    }).then(dat=>{
+        console.log('dat',dat);
+        
+    },er=>{
+        console.log('er',er);
+        
+    }) */
+    //fetch 的post请求
+    fetch('./data.json',{
+        method:'post',
+        credentials:"same-origin",//同源可携带cookie
+                                    // include  所有的请求 都可以携带
+                                    // omit     所有的请求都不带
+        headers:{
+            //设置请求头
+        },
+        body:JSON.stringify({a:123,b:123245})
+    }).then(data=>data.json(),err=>{console.log(err)}).then(data=>{console.log(4444,data)},err=>{console.log('catch',err)})
+
+    function http(url,options={}){
+        let {
+            method='get',
+            data={},
+            headers={},
+            credentials='same-origin'
+        }=options;
+        let isGet = method.toLowerCase()=='get'
+        if(isGet){
+            let str='';
+            for (const k in data) {
+                str += `${k}=${data[k]}&`
+            }
+            str = str.replace(/&$/,'');
+            url = url.indexOf('?')==-1?url+'?'+str:url+"&"+str;
+        }
+        return    fetch(url,{
+            method:method,
+            body:isGet?null:JSON.stringify(data),
+            headers,
+            credentials
+        }).then(data=>{
+            if(/[45]\d{2}/.test(data.status)){
+                throw Error(`${data.status} ${data.statusText}`)
+            }
+            return data.json();
+        })
+    }
+
+    http('./data.json',{
+        method:'post',
+        data:{
+            a:12,
+            b:23
+        }
+    }).then(data=>{
+        console.log(data);
+        
+    }).catch(err=>{
+        console.log(err);
+        
+    });
+
+    http.get = function(url,data){
+        return http(url,{
+            method:'get',
+            data
+        })
+    }
+    http.post = function(url,data){
+        return http(url,{
+            method:'post',
+            data
+        })
+    }
+   /*  http.get('./data.json',{
+        data:{
+            a:12,
+            b:23
+        }
+    }).then(data=>{
+        console.log(data);
+        
+    }).catch(err=>{
+        console.log(err);
+        
+    });
+    http.post('./data.json',{
+        data:{
+            a:12,
+            b:23
+        }
+    }).then(data=>{
+        console.log(data);
+        
+    }).catch(err=>{
+        console.log(err);
+        
+    });
+
+ */
+    
+</script>

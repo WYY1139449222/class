@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size:50px">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            background: red;
+            /* width: 400px;
+            height: 400px; */
+            width: 80vw;
+            height: 80vh;
+        }
+    </style>
+</head>
+<body>
+       <!-- 
+        dpr 1 2 3 ;
+        rem  相对比  1个rem 就是html标签的font-size
+        em  相对于父节点的font-size  前提自己没有font-size  自己有font-size  font-size属性的em还是参照父级  其他属性参照自己的font-size 
+        vh 1vh 就是一个屏幕高度的1%
+        vw 1vw 就是一个屏幕宽度的1%
+
+     -->
+     <div id="box"></div>
+</body>
+</html>
+<script>
+    //rem  100px
+    //tlexible.js 淘宝  把一个手机屏慕 分成10份
+
+    let w = document.documentElement.clientWidth||document.body.clientWidth;
+
+    document.createElement.style.fontSize = w*100/750 + 'px';
+</script>

@@ -1,0 +1,34 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+*{
+    margin: 0;padding: 0;
+}
+@keyframes rote{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.bgm{
+    background: url(http://as.eqh5.com/h5_view_2/images/bgmBtn-fbd2dc.svg);
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: cover;
+    position: fixed;
+    right: 0.1rem;
+    top: 0.1rem;
+    animation: rote 3s linear infinite;
+    animation-play-state: paused;
+    z-index: 30;
+}
+#box1{
+    width: 100%;
+    height: 100%;
+    background: #333;
+    position: relative;
+    
+}

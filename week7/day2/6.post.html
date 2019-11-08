@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" placeholder="name">
+        <input type="text" placeholder="pasword">
+        <button id="btn">提交</button>
+</body>
+</html>
+<script>
+
+    let xhr = new XMLHttpRequest();
+    //post不存在缓存
+    xhr.open('post','https://www.souyidai.com/export/invest/portalData2',true);
+    xhr.onreadystatechange = function(){
+        // let t = xhr.getResponseHeader('date');//获取指定响应头
+
+                // xhr.getAllResponseHeaders()//获取所有的响应头
+
+                
+        // console.log(new Date(t));
+        if(xhr.readyState == 4&&/200|304/.test(xhr.status)){
+            console.log(xhr.response);
+            
+        }else if(/^[45]\d{2}/.test(xhr.status)){
+            console.log('失败');
+        }
+    }
+    let obj = {
+        a:12,
+        b:13
+    }
+    // xhr.send(JSON.stringify(obj));
+
+    //form Date的格式;
+        //首先把要传的对象转成search字符串；然后再去更改请求头的content-type属性 
+    let str = '';
+    for (const k in obj) {
+        str+=`${k}=${obj[k]}&`
+    }
+    
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+    xhr.send(str);
+</script>

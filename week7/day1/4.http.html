@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    // http 计算机网络
+    // http事务：一次完整的http请求（请求+响应）：
+    //http报文:
+    /* 
+        通用头：
+            Request URL: https://eclick.baidu.com/
+            Request Method: GET
+            Status Code: 200 OK
+            Remote Address: 111.202.114.81:443
+            Referrer Policy: no-referrer-when-downgrade
+        请求头：
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,* / * ;q=0.8,application/signed-exchange;v=b3
+            Accept-Encoding: gzip, deflate, br
+            Accept-Language: zh-CN,zh;q=0.9,en;q=0.8
+            Connection: keep-alive
+
+            Cookie: BAIDUID=F31C077CC712BD79F35967CD5F199F9A:FG=1; BIDUPSID=F31C077CC712BD79F35967CD5F199F9A; PSTM=1566029635; BDUSS=HcxbXVPV0xjWUNhaGVOd0pjNHVwSi1uU0FsTGJYRi1MUm9LZlZQSFFXSTJjY0ZkRVFBQUFBJCQAAAAAAAAAAAEAAAC16y4gd3l5NTE1MjgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADbkmV025JldR; BDORZ=B490B5EBF6F3CD402E515D22BCDA1598; H_PS_PSSID=1459_21118_29911_29567_29221; BDRCVFR[feWj1Vr5u3D]=I67x6TjHwwYf0; delPer=0; PSINO=2; pgv_pvi=1157447680; pgv_si=s6315187200; __yjsv5_shitong=1.0_7_616e786b23650d30a4a954c865ce5c34100c_300_1572251531279_221.216.139.204_03ac7d19; yjs_js_security_passport=7bc4756b804e24ead5503a1047094106384161a8_1572251531_js
+
+            Host: eclick.baidu.com
+
+            Referer: https://pos.baidu.com/wh/o.htm?ltr=
+            Sec-Fetch-Mode: nested-navigate
+            Sec-Fetch-Site: same-site
+            Upgrade-Insecure-Requests: 1
+            User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+        响应头：
+            Accept-Ranges: bytes
+            Cache-Control: max-age=0
+            Connection: keep-alive
+            Content-Length: 114
+            Content-Type: text/html
+            Date: Mon, 28 Oct 2019 08:53:36 GMT
+            Etag: "5d2c473c-72"
+            Expires: Mon, 28 Oct 2019 08:53:36 GMT
+            Last-Modified: Mon, 15 Jul 2019 09:28:28 GMT
+            Server: nginx
+    */
+
+
+    //强制缓存 cache-control:'public;max-age' 'no-cache'
+    //协商缓存 Etag /Last-Modified
+
+
+    /* 
+        http 状态吗
+
+        200：代表请求成功
+
+        301：代表永久重定向 访问一个网址 直接给你重新定向到了其他网址
+        302：临时转移  
+        304：读取缓存 [表示浏览器端有缓存，并且服务端未更新，不再向服务端请求资源]//协商缓存
+        307：临时重定向
+
+        以4开头的都是客户端的问题；
+        400 :数据/格式错误
+        401: 权限不够；（身份不合格，访问网站的时候，登录和不登录是不一样的）
+        403：短时间重复请求 被拒绝
+        404 : 路径错误，找不到文件（前端的错误）
+        405：方法使用错误
+
+        以5开头都是服务端的问题
+        500 : 服务器的问题
+        503: 超负荷 
+
+    */
+
+
+    /* 
+        URL 统一资源路径
+        URN 统一资源名称
+        URI 统一资源标识 URL+URN
+    */
+   /* 
+    https://www.baidu.com：443/s?wd=flex&rsv_spt=1#qqq
+    https          :协议 http https ftp
+                         https实在http的基础上增加了一个SSL安全套阶层
+    www.baidu.com  : 域名部分
+    ：443          ：端口号  0~65535  每一个服务都会对应一个端口号
+                        http默认80  https默认443  ftp默认21
+    /s             :路径部分
+    ?  wd=flex&rsv_spt=1: search：更改search 会刷新页面
+    #qqq  hash  哈希
+   */
+</script>

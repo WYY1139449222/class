@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    
+    <button id="btn">点击</button>
+</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $("#box").animate({left:400,top:400},500)
+
+
+
+
+
+    var box = document.getElementById('box');
+
+    btn.onclick = function(){
+     box.style.left = 400+'px';   
+     box.style.top = 400+'px';   
+    }
+    
+    
+    //js 动画 固定步长 固定时间
+
+    //目标位置 向左移动500px;
+    // var timer = null;
+    // let l = parseFloat(getComputedStyle(box).left);//获取初始值
+    // timer = setInterval (()=>{
+    //         l++;
+    //         if(l>=500){
+    //             l=500;
+    //             clearInterval(timer);
+    //         }
+    //         box.style.left = l+'px'
+    // },10)
+
+    // function fn(){
+    //     l++;
+    //     if(l>=500){
+    //         l=500
+    //     }else{
+    //         requestAnimationFrame(()=>{
+    //             fn()
+    //         })
+    //         // setTimeout(()=>{
+    //         //     fn()
+    //         // },10)
+    //     }
+    //     box.style.left = l+'px'
+    // }
+    // fn()
+
+    //固定步长  根据时间算出步长即可
+    let l = parseFloat(getComputedStyle(box).left);
+    let speed = (500-l)/1000;
+    let time = 0;
+    function fn(){
+        time+=10;
+        if(time>=1000){
+            time=1000;
+        }else{
+            // requestAnimationFrame(()=>{
+            //     fn()
+            // })
+            setTimeout(()=>{
+                fn()
+            },10)
+        }
+        box.style.left = l+speed*time+'px'
+    }
+    // fn()
+  
+</script>

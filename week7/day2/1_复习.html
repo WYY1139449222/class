@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            position: absolute;
+            left: 0;
+            top:30px;
+            width: 500px;
+            height: 300px;
+            font-size: 50px;
+            display: none;
+        }
+        .css{
+            background: chartreuse;
+
+        }
+        .js{
+            background: cyan;
+        }
+        .html{
+            background: darkblue;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="css">css</div>
+    <div class="js">js</div>
+    <div class="html">html</div>
+    <a href="#css">css</a>
+    <a href="#js">js</a>
+    <a href="#html">html</a>
+</body>
+</html>
+<script>
+    // cookie  localStorage   seccionStorage
+    //DNS 域名解析
+    //URL  URN  URI
+    //URL  协议：//域名：端口号/路径？search#hash
+    //http 超文本传输协议
+    //https 在http的基础上增加了一个SSL安全套阶层：默认端口443
+    //ftp  后台上传文件的协议  默认端口21
+
+
+    //强缓存  cache - control：no-cache  不走强缓存 no-store  不缓存
+let css = document.getElementsByClassName('css')[0];
+let js = document.getElementsByClassName('js')[0];
+let html = document.getElementsByClassName('html')[0];
+let as = document.querySelectorAll('a');
+let divs = document.querySelectorAll('div');
+    window.addEventListener('hashchange',function(e){
+        init()
+        
+    },false)
+    function none(n){
+            for (let i = 0; i < divs.length; i++) {
+                divs[i].style.display = 'none';
+            }
+            divs[n].style.display = 'block';
+        }
+    function init(){
+        if(location.hash=='#css'){
+            none(0)
+        }
+        if(location.hash=='#js'){
+            none(1)
+        }
+        if(location.hash=='#html'){
+            none(2)
+        }
+    }
+    init()
+</script>

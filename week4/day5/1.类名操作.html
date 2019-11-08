@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="qqq aaa a_qw">珠峰培训</div>
+</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    var box = document.getElementById('box');
+    HTMLElement.prototype.hasClass = function(cln=''){
+        let str = this.className;
+        let ary = str.replace(/^ +| +$/g,'').split(/ +/g);
+        cln = cln.replace(/^ +| +$/g,'');
+        // return ary.indexOf(cln)==-1?false:true;
+        let arr = cln.split(/ +/);
+        //可以使用 ary 和 arr 的交集数组 与 arr 进行长度的比较
+        let temp = []
+        arr.forEach(item => {
+            ary.indexOf(item)==-1?null:temp.push(item);
+        });
+        return temp.length==arr.length;
+
+    } ;
+    HTMLElement.prototype.hasClass = function(cln=''){
+        if(cln.replace(/^ +| +$/g,''))return false;
+        let arr = cln.replace(/^ +| +$/g,'').split(/ +/);
+        // let ary = this.className.replace(/^ +| +$/g,'').split(/ +/);
+        let str = this.className;
+        let flag  = true;
+        for (let i = 0; i < arr.length; i++) {
+            let reg = new RegExp(`\\b${arr[i]}\\b`,'g');
+            //   /(^| +)qqq( +|$)/
+            if(!reg.test(str))
+                flag = false;
+        }
+        return flag;
+    }
+    box.hasClass('aaa')
+    box.hasClass('a')
+
+    HTMLElement.prototype.addClass = function(cln=''){
+        if(this.hasClass(cln))return;
+        let arr = cln.replace(/^ +| +$/g,'').split(/ +/);
+        arr.forEach(item=>{
+            this.hasClass(item)?null:this.className+= ' '+item;
+        })
+    }
+
+    HTMLElement.prototype.removeClass = function(cln){
+        let arr = cln.replace(/^ +| +$/g,'').split(/ +/);
+        let str = this.className;
+        arr.forEach(item=>{
+            str = str.replace(new RegExp(`\\b${item}\\b`,'g'),'');
+        })
+        this.className = str
+    }
+    HTMLElement.prototype.toggleClass = function(cln=''){
+        if(this.hasClass(cln))this.removeClass(cln);
+        this.addClass(cln);
+    }
+
+    $('#box').addClass()
+    $('#box').hasClass()
+    $('#box').removeClass()
+    $('#box').toggleClass()
+</script>
