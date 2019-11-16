@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    function f(s){
+    if(s.indexOf('[')<0)return s;
+    s=s.replace(/(\d+)\[([a-zA-Z]+)\]/,(a,b,c)=>{
+            let ss='';
+            for (let i = 0; i < b; i++) {
+               ss+=c
+            }
+            return ss;
+        })
+      
+        return s.indexOf('[')>0?f(s):s;
+    }
+</script>
+<script>
+    
+
+</script>

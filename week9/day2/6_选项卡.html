@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            position: relative;
+            width: 500px;
+        }
+        span{
+            width: 50px;
+            height: 30px;
+            float: left;
+            text-align: center;
+            border:1px solid #aaa;
+            line-height: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .body{
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            top: 30px;
+            font-size: 30px;
+            line-height: 300px;
+            text-align: center;
+            user-select: none;
+            background: cornflowerblue;
+        }
+        span.current{
+            background: gold;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <span v-for = '(item,index) in ary' @click = 'change(index)' >
+            {{item}}
+        </span>
+        <div class="body" v-for = 'item in arr' >{{item}}</div>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰",
+            ary:['js','css','html','vue'],
+            body:['JS666','css学的好','html好','vue真的好'],
+            arr:['JS666']
+        },
+        methods:{
+            change(n){
+               this.arr = [this.body[n]]
+            }
+        }
+    })
+</script>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <input type="text" v-model='name'>
+        <button v-on:click='handle($event,333,444,555)'>按钮</button>
+        <button @click='handle'>按钮</button>
+        <a href="http://baidu.com" @click.prevent.stop='handle'>baidu</a>
+    </div>
+</body>
+
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    // v-on 是专门用来绑定事件的 指令 简写 @
+    //@click = '函数名' 在methods中 的函数 会接受一个事件对象作为参数
+    //@click = '函数名(val)' 在methods中 的函数 会接收val的参数
+    //若既要传自己的参数，又要传事件对象 则需要传$event
+
+    //事件修饰符     prevent(preventDefault)  
+    //              stop(stopPropergation) 
+    //              once(只能执行一次)
+    //              self(只有当点击自身的是侯,才会触发对应的函数)
+    //              capture(在捕获阶段触发对应的函数)
+    //              passive(先执行默认行为，再执行对应的函数)
+   
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            name: "珠峰"
+        },
+        methods: {
+            //这个对象中放的都是当前实例用到的方法
+            //this 是当前实例
+            //methods 中的方法 和data中的 内容 都会挂载到当前实例上
+            //所以 methods和data中的方法 名字不能重复
+            handle(val) {
+                console.log(this.name, arguments);
+            }
+        }
+    })
+</script>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="用户名" id="usn">
+    <input type="password" placeholder="密码" id="psd">
+  
+    <button id="btn" style="display: none;">注册</button>
+    <button id="btn1" >登录</button><button id="btn2">请求info</button>
+
+</body>
+</html>
+<script src="./jquery-3.3.1.js"></script>
+<script>
+    
+    $("#btn").on('click',function(){
+        let name = $('#usn').val();
+        let psd = $('#psd').val();
+        if(!name||!psd){
+            alert('账号或密码不能为空')
+            return
+        }
+        $.post('http://localhost:8000/reg',{
+            username:name,
+            password:psd
+        },function(data){
+           if(data.code==1){
+               alert('该用户已存在')
+           }else{
+               alert('注册成功，请登录')
+               $("#btn").hide()
+               $("#btn1").show()
+               $('#usn').val('');
+               $('#psd').val('');  
+           }
+        })
+    })
+    $("#btn1").on('click',function(){
+        let name = $('#usn').val();
+        let psd = $('#psd').val();
+        $.ajax({
+            type:'post',
+            url:'http://localhost:8000/login',
+            data:{
+                username:name,
+                password:psd
+            },
+            xhrFields: {
+                withCredentials: true
+            },
+
+            success:(data=>{
+                console.log(data);
+                
+            })
+
+        })
+       
+        if(!name||!psd){
+            alert('账号或密码不能为空')
+        }
+
+    })
+    $("#btn2").on('click',function(){
+        $.ajax({
+            url:'http://localhost:8000/info',
+            xhrFields: {
+                withCredentials: true
+            }
+        })
+       
+    })
+
+</script>

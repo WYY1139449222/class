@@ -1,0 +1,13 @@
+*{
+    margin: 0;padding: 0;
+}
+h1{
+    text-align: center;
+    min-height: 100px;
+    line-height: 200px;
+    background: black;
+    color: blanchedalmond;
+}
+img{
+    width: 200px;
+}

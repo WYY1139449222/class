@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <h1 v-if='n%3==0'>{{name}}</h1> -->
+        <!-- <h3 v-else-if='(n%3==1)'>{{name+n}}</h3> -->
+        <!-- <h2 v-else>{{n+name}}</h2> -->
+        <input type='number' v-model='n'>
+        
+        <h1 v-if='n%2==0'>v-if</h1>
+        <h1 v-show = 'n%2==0'>v-show</h1>
+        <!-- 
+            v-show 只是让元素隐藏
+            v-if   元素整个就不加载
+            v-for 的优先级要比v-if高 先处理v-for 再处理v-if
+         -->
+         <button @click = 'change'>切换</button>
+         <input type="text" v-if='flag' placeholder="性名" key = '1'>
+         <input type="text" v-else placeholder="年龄" key = '2'>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    //  v-if v-else 之间不能插入其他标签
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰",
+            n:0,
+            flag:true
+        },
+        methods:{
+            change(){
+             
+            this.flag = !this.flag
+        
+            }
+        }
+    })
+</script>
