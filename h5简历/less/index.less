@@ -4,6 +4,7 @@ html,body{
 }
 *{
     margin: 0;padding: 0;
+    list-style: none;
 }
 @keyframes rote{
     0%{
@@ -13,22 +14,478 @@ html,body{
         transform: rotate(360deg);
     }
 }
+@keyframes scole{
+    0%{
+        background-size:130% 130%
+    }
+    100%{
+        background-size:100% 100%
+    }
+}
+@keyframes rev{
+    0%{
+        transform: scale(1) rotateY(0deg);
+    }
+    50%{
+        transform: scale(1.5) rotateY(180deg);
+    }
+    100%{
+        transform: scale(1) rotateY(0deg);
+    }
+}
+@keyframes big{
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes movedown{
+    0%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(30vw);
+    }
+}
+@keyframes bounceInLeft {
+    0% {
+      transform: translateX(-50vw);
+    }
+    60% {
+      transform: translateX(5vw);
+    }
+    75% {
+      transform: translateX(-3vw);
+    }
+    90% {
+      transform: translateX(2vw);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  @keyframes bounceInRight {
+    0% {
+      transform: translateX(50vw);
+    }
+    60% {
+      transform: translateX(-5vw);
+    }
+    75% {
+      transform: translateX(3vw);
+    }
+    90% {
+      transform: translateX(-2vw);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
 .bgm{
-    background: url(http://as.eqh5.com/h5_view_2/images/bgmBtn-fbd2dc.svg);
-    width: 0.3rem;
-    height: 0.3rem;
+    background: url(../img/bgmBtn.svg);
+    width: 0.7rem;
+    height: 0.7rem;
     background-size: cover;
     position: fixed;
-    right: 0.1rem;
-    top: 0.1rem;
-    animation: rote 3s linear infinite;
+    right: 0.4rem;
+    top: 0.4rem;
+    animation: rote 2s linear infinite;
     animation-play-state: paused;
     z-index: 30;
 }
-#box1{
-    width: 100%;
-    height: 100%;
-    background: #333;
+
+#box{
+    width: 100vw;
+    height: 100vh;
     position: relative;
-    
+    .page1{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: url(../img/bg.webp) center center no-repeat;
+        animation: scole 0.5s linear;
+        animation-fill-mode:forwards;
+        .rote1{
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 7vw;
+            top: 20vw;
+            animation: rote 5s ease-in-out infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote2{
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            right: 7vw;
+            top: 20vw;
+            animation: rote 3s ease-in-out infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote3{
+            width: 20vw;
+            height: 50vw;
+            position: absolute;
+            left: -2vw;
+            top: 100vw;
+            animation:movedown 2s ease-out infinite ;
+            img:nth-child(1){
+                position: absolute;
+                left: 0;
+                top: 15vw;
+            }
+        }
+        .out{
+            width: 100vw;
+            height: 160vw;
+            position: absolute;
+            top: 20vw;
+            animation: big 1s ease-out;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .in{
+            width: 80vw;
+            height: 80vw;
+            position: absolute;
+            left: 9vw;
+            top: 50vw;
+            animation: rote 8s linear infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .jianli1{
+            position: absolute;
+            left: 20vw;
+            top: 80vw;
+        }
+        .jianli2{
+            position: absolute;
+            left: 35vw;
+            top: 80vw;
+        }
+        .jianli3{
+            position: absolute;
+            left: 55.5vw;
+            top: 80.5vw;
+            animation: rev 2s ease-in-out infinite;
+        }
+        .page1text{
+            width: 90vw;
+
+            position: absolute;
+            left: 5vw;
+            bottom: 10vw;
+            font-size: 4vw;
+            text-align: center;
+            color:rgba(54, 255, 251, 0.619608);
+
+        }
+    }
+    .page2{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: url(../img/bg.webp) center center no-repeat;
+        animation: scole 0.5s linear;
+        animation-fill-mode:forwards;
+        .rote1{
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            right: 7vw;
+            bottom: 40vw;
+            animation: rote 5s ease-in-out infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote2{
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 7vw;
+            top: 20vw;
+            animation: rote 3s ease-in-out infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote4{
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            right: -10vw;
+            top: -10vw;
+            animation: rote 5s linear infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote5{
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            left: -10vw;
+            bottom: -10vw;
+            animation: rote 5s linear infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .page2img{
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            left: 30vw;
+            top: 20vw;
+            .rote6{
+                width: 100%;
+                height: 100%;
+                img{
+                    position: absolute;
+                    left: 5%;
+                    top: 5%;
+                    width: 90%;
+                    height: 90%;
+                }
+            }
+            .rote7{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .rote8{
+                position: absolute;
+                top: -10%;
+                left: -10%;
+                width: 120%;
+                height: 120%;
+                border-radius: 50%;
+                animation: rote 3s linear infinite;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+            .rote9{
+                width: 80%;
+                height: 80%;
+                position: absolute;
+                left: 10%;
+                top:10%;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+           
+        }
+        .line1{
+            position: absolute;
+            top: 60vw;
+            width: 55vw;
+            height: 2vw;
+            img{
+                width: 100%;
+            }
+            
+        }
+        .line2{
+            position: absolute;
+            top: 68vw;
+            left: 43.5vw;
+        }
+        .line3{
+            position: absolute;
+            top: 64vw;
+            left: 52vw;
+        }
+        .page2text{
+            position: absolute;
+            top: 57vw;
+            left: 5vw;
+            color:rgba(54, 255, 251, 0.619608);
+            font-size: 5vw;
+
+            i{
+                position: absolute;
+                top: 8vw;
+                width: 51vw;
+                animation: bounceInLeft 1s ;
+            }
+            span{
+                position: absolute;
+                left: 46vw;
+                top: 19vw;
+                width: 30vw;
+                animation: bounceInRight 1s;
+            }
+        }
+        .information{
+            width: 70vw;
+            height: 70vw;
+            position: absolute;
+            left: 15vw;
+            bottom: 20vw;
+            font-size: 5vw;
+            color:rgba(54, 255, 251, 0.619608);
+        }
+    }
+    .page3{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: url(../img/bg.webp) center center no-repeat;
+        animation: scole 0.5s linear;
+        animation-fill-mode:forwards;
+        .sanjiao{
+            position: absolute;
+            width: 24vw;
+            height: 24vw;
+            position: absolute;
+            left: 10vw;
+            top: 15vw;
+            >div{
+                width: 12vw;
+                height: 12vw;
+                position: absolute;
+                top: 7vw;
+                left: 6vw;
+               >svg{
+                animation: rote 8s linear infinite;
+               }
+            }
+        }
+        .skill{
+            position: absolute;
+            left: 40vw;
+            top: 20vw;
+            color:rgb(61, 255, 252);
+            font-size: 6vw;
+            >p{
+                width: 50vw;
+                height: 10vw;
+                border-bottom: 0.5vw solid rgb(61, 255, 252);
+            }
+            >span{
+                font-size: 4vw;
+            }
+        }
+        .js{
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 65vw;
+            top: 80vw;
+            svg{
+                animation: rote 5s linear infinite;
+            }
+            span{
+                color:rgb(61, 255, 252);
+                font-size: 10vw;
+                position: absolute;
+                left: 8vw;
+                top: 5vw;
+            }
+        }
+        .css{
+            top: 50vw;
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 10vw;
+            svg{
+                animation: rote 5s linear infinite;
+            }
+            span{
+                color:rgb(61, 255, 252);
+                font-size: 10vw;
+                position: absolute;
+                left: 3vw;
+                top: 5vw;
+            }
+        }
+        .vue{
+            top: 140vw;
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 65vw;
+            svg{
+                animation: rote 5s linear infinite;
+            }
+            span{
+                color:rgb(61, 255, 252);
+                font-size: 10vw;
+                position: absolute;
+                left: 3vw;
+                top: 5vw;
+            }
+        }
+        .react{
+            top: 110vw;
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 10vw;
+            svg{
+                animation: rote 5s linear infinite;
+            }
+            span{
+                color:rgb(61, 255, 252);
+                font-size: 6vw;
+                position: absolute;
+                left: 3vw;
+                top: 8vw;
+            }
+        }
+        .mi{
+            top: 95vw;
+            width: 25vw;
+            height: 25vw;
+            position: absolute;
+            left: 40vw;
+            svg{
+                animation: rote 5s linear infinite;
+            }
+            span{
+                color:rgb(61, 255, 252);
+                font-size: 10vw;
+                position: absolute;
+                left: 5vw;
+                top: 5vw;
+            }
+        }
+      
+    }
 }

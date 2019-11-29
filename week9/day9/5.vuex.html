@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <h2>{{$store.state.count}}</h2>
+        <my-btn></my-btn>
+    </div>
+</body>
+</html>
+<template id="mybtn">
+       <div>
+           <h3>{{$store.state.count}}</h3>
+           <h3>{{myn}}</h3>
+           <h3>{{myn2}}</h3>
+           <button @click ='add'>+</button>
+           <button @click='minus'>-</button>
+       </div>
+</template>
+<template>
+    <input type="text">
+</template>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vuex/dist/vuex.js"></script>
+<script>
+    let store = new Vuex.Store({
+        state:{
+            count:0,
+            name:'zhufeng'
+
+        },
+        mutations:{
+            //存贮的都是用来改变 state 中的状态 的方法
+            // 我们需要通过 $store.commit这个方法来触发对应的函数
+            change(state,option){
+                console.log(arguments);
+                state.count+=option.n
+            }
+        }
+    })
+    Vue.component('my-btn',{
+        template:'#mybtn',
+        data(){
+            return{
+                myn:this.$store.state.count
+            }
+        },
+        computed:{
+            /* mtn2(){
+                //我们 一般都是 使用 计算属性去接受 Vuex 中的数据
+                return this.$store.state.count
+            } */
+
+            //Vuex.mapState 是Vuex提供的一个辅助函数 返回值是一个对象
+            ...Vuex.mapState({
+                myn2:state=>state.count
+            })
+        },
+        methods:{
+            add(){
+                //this.$store.commit(mutations中的方法名称)
+                this.$store.commit('change',{n:1} )
+            },
+            minus(){
+                this.$store.commit('change',{n:-1})
+            }
+
+        }
+    })
+    let vm = new Vue({
+        el:'#app',
+        store,//注入完成之后  每一个后代身上 都会有一个$store属性
+        
+    })
+</script>

@@ -11,6 +11,14 @@ let vm = new Vue({
         show:false,
         delIndex:''
     },
+    computed:{
+        changeAll(){
+            this.datalist.forEach(item=>{
+                item.isSelect = this.checkAll
+            })
+            this.sum()
+        },
+    },
     created(){
         //实例创建完成后会触发(钩子函数)
         this.getData();
@@ -21,7 +29,7 @@ let vm = new Vue({
             fetch('./data.json').then(res=>{
                 return res.json()
             }).then(data=>{
-                this.datalist = data;
+                this.datalist = data.data;
                 console.log(data);
                 
                 this.sum();
@@ -36,8 +44,8 @@ let vm = new Vue({
             this.total = this.datalist.filter(item=>item.isSelect).reduce((prev,next)=>prev+next.count*next.price,0)
 
         },
-        checkoneFn(n,obj){
-            fetch('http://127.0.0.1:8080/jd/isselect',{
+       /*  checkoneFn(n,obj){
+            fetch('./data.json',{
                 method:'post',
                 body:JSON.stringify({id:Object.id,isSelect:obj.isSelect})
             }).then(data=>{
@@ -53,11 +61,11 @@ let vm = new Vue({
                 
             })
             
-        },
+        }, */
         changeAllFn(){
-            this.datalist.forEach(item=>{
+           /*  this.datalist.forEach(item=>{
                 item.isSelect = this.checkAll
-            })
+            }) */
             this.sum()
         },
         del(n){
@@ -80,3 +88,4 @@ let vm = new Vue({
         }
     }
 })
+

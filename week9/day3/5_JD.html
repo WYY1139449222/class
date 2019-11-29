@@ -40,7 +40,7 @@
             <table class="table table-bordered text-center">
                 <thead>
                     <tr class="bg-danger text-primary ">
-                        <th>全选 <input type="checkbox" v-model='checkAll' @change='changeAllFn'></th>
+                        <th>全选 <input type="checkbox" v-model='checkAll' @change='changeAll'></th>
                         <th>商品名称</th>
                         <th>图片</th>
                         <th>描述</th>
@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     <tr v-for='(item,index) in datalist' :key='item.id'>
-                        <td><input type="checkbox" :checked='item.isSelect' @change='checkoneFn(index)'></td>
+                        <td><input type="checkbox" :checked='item.isSelect' @change='checkoneFn(index,item)'></td>
                         <td>{{item.title}}</td>
                         <td><img :src="item.pic" alt=""></td>
                         <td>{{item.desc}}</td>
@@ -75,7 +75,6 @@
                         </td>
                     </tr>
                 </tbody>
-
             </table>
         </div>
         <div class="mask" v-show='show'>

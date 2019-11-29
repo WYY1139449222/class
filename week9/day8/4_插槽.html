@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mybtn {
+            min-width: 70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 15px;
+            margin: 0 7px;
+            outline: none;
+            background: lightcoral;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .mybtn:hover {
+            background: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-button>这是自己定义的文本</my-button>
+    </div>
+</body>
+<template id="myButton">
+    <button @click='fn' class="mybtn">
+        
+        <slot>按钮</slot>
+        <slot>按钮</slot>
+    </button>
+</template>
+
+</html>
+<!-- 
+    插槽就是将自定义标签内包含的部分 我们可以在组件内部通过使用<slot></solt>标签
+        放到对应的标签里边 
+    <slot>包含的是默认内容</solt>
+ -->
+<script src="../node_modules/vue/dist/vue.js"></script>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('my-button', {
+        template: "#myButton",
+        props: ['text'],
+        methods: {
+            fn(e) {
+                this.$emit('click', e)
+            }
+        },
+        created(){
+            console.log(this);
+            
+        }
+
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            name: "珠峰"
+        }
+    })
+</script>

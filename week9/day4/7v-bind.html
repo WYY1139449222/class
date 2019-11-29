@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 :class='qqq' >{{name}}</h1>
+        <h2 :class="{qwer:flag,asdf:flag}"></h2>
+        <!-- 属性名是要添加的类名 属性值是判断 属性名是否添加 true就添加 false不添加 -->
+
+        <h2 :class='ary'>{{name}}</h2>
+        <div :style='obj'>{{name}}</div>
+        <button @click='fn'>111</button>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰",
+            qqq:'a',
+            flag:true,
+            ary:['q','w','e','r'],
+            obj:{
+                color:'#fff',
+                'font-size':'18px',
+                backgroundColor:'red'
+            }
+        },
+        methods:{
+            fn(){
+                this.flag = !this.flag;
+                this.qqq = this.qqq=='a'?'b':'a',
+                this.ary.pop()
+            }
+        }
+    })
+</script>

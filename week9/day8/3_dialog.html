@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+    <style>
+        .dialogBox {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .dialogBox .contentBox {
+            position: absolute;
+            margin: auto;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            min-height: 300px;
+            transform: translateY(-60%) translateX(-50%);
+            border-radius: 10px;
+            font-size: 20px;
+            background: #fff;
+            border: 1px solid lightblue;
+        }
+
+        .contentBox header {
+            border-bottom: 1px solid #111;
+            padding-left: 15px;
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .contentBox main {
+            min-height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .contentBox footer {
+            height: 50px;
+            line-height: 50px;
+            text-align: right;
+            border-top: 1px solid #111;
+        }
+
+        .mybtn {
+            min-width: 70px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 15px;
+            margin: 0 7px;
+            outline: none;
+            background: lightcoral;
+            border: 1px solid lightblue;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .mybtn:hover {
+            background: lightgreen;
+        }
+
+        .fade-enter,
+        .fade-leave-to {
+            opacity: 0;
+        }
+
+        .fade-enter-to,
+        .fade-leave {
+            opacity: 1;
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            transition: all 0.3s;
+        }
+
+        .drop-enter {
+            transform: translateY(0)
+        }
+
+        .drop-enter-to {
+            transform: translateY(100px)
+        }
+
+        .drop-enter-active {
+            transition: all 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-button text='点击展示弹框' @click='showFn'></my-button>
+        <my-dialog 
+                :visible='isshow' 
+                @sure='surefn' 
+                @cancel='cancelfn'
+                title="警告"
+                content='是否确定删除'
+        
+        ></my-dialog>
+    </div>
+</body>
+
+</html>
+<template id="myDialog">
+    <transition name='fade'>
+        <div class="dialogBox" v-show='visible'>
+            <transition name='drop'>
+                <div class="contentBox" v-show='visible'>
+                    <header>{{title}}</header>
+                    <main>{{content}}</main>
+                    <footer>
+                        <my-button text='取消' @click='canfn'></my-button>
+                        <my-button text='确定' @click='surfn'></my-button>
+                    </footer>
+                </div>
+            </transition>
+        </div>
+    </transition>
+</template>
+<template id="myButton">
+    <button @click='fn' class="mybtn">{{text||'按钮'}}</button>
+</template>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('my-dialog', {
+        template: '#myDialog',
+        props: ['visible','title','content'],
+        methods: {
+            canfn(e) {
+                this.$emit('cancel', e)
+            },
+            surfn(e) {
+                this.$emit('sure', e)
+            }
+        }
+    })
+    Vue.component('my-button', {
+        template: "#myButton",
+        props: ['text'],
+        methods: {
+            fn(e) {
+                this.$emit('click', e)
+            }
+        }
+
+    })
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            name: "珠峰",
+            isshow: false
+        },
+        methods: {
+            showFn(e) {
+                this.isshow = true;
+            },
+            surefn(e) {
+                this.isshow = false;
+
+            },
+            cancelfn(e) {
+                this.isshow = false;
+
+            }
+        }
+    })
+</script>

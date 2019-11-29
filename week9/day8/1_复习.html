@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+        Vue组件都是Vue实例，只有当组件被使用的时候才能当作组件
+        全局组件：Vue.component(name,{})
+        局部组件：l声明 注册（在那用就在那注册） 使用
+            data是个函数返回的对象  保证组件的独立性
+        字符组件跟全局组件局部组件没有任何关系
+        A组件用了B组件 那么A就是父组件B就是子组件
+
+        字符组件数据交互
+        父传子 ：让子组件使用父组件的数
+            1、$parent 通过获取组件的方式
+            2、自定义属性+props（type default required validator）
+            3、$attrs 可以获取没有被props接收的数据
+            4、provide/inject
+            5、$children
+            6、$refs
+        子传父 ：让子组件告诉父组件要执行什么代码，但不能直接更改父组件的数据
+            1、$parent
+            2、自定义事件+$emit（所有在组件上边的事件都是自定义事件）
+            3、$listeners 可以获取传给子组件所有的自定义事件
+            4、provide/inject  provide（）{return {name:this.name}}
+    */
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰"
+        }
+    })
+</script>

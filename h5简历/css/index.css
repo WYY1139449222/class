@@ -6,6 +6,7 @@ body {
 * {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 @keyframes rote {
   0% {
@@ -15,21 +16,469 @@ body {
     transform: rotate(360deg);
   }
 }
+@keyframes scole {
+  0% {
+    background-size: 130% 130%;
+  }
+  100% {
+    background-size: 100% 100%;
+  }
+}
+@keyframes rev {
+  0% {
+    transform: scale(1) rotateY(0deg);
+  }
+  50% {
+    transform: scale(1.5) rotateY(180deg);
+  }
+  100% {
+    transform: scale(1) rotateY(0deg);
+  }
+}
+@keyframes big {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes movedown {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(30vw);
+  }
+}
+@keyframes bounceInLeft {
+  0% {
+    transform: translateX(-50vw);
+  }
+  60% {
+    transform: translateX(5vw);
+  }
+  75% {
+    transform: translateX(-3vw);
+  }
+  90% {
+    transform: translateX(2vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes bounceInRight {
+  0% {
+    transform: translateX(50vw);
+  }
+  60% {
+    transform: translateX(-5vw);
+  }
+  75% {
+    transform: translateX(3vw);
+  }
+  90% {
+    transform: translateX(-2vw);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 .bgm {
-  background: url(http://as.eqh5.com/h5_view_2/images/bgmBtn-fbd2dc.svg);
-  width: 0.3rem;
-  height: 0.3rem;
+  background: url(../img/bgmBtn.svg);
+  width: 0.7rem;
+  height: 0.7rem;
   background-size: cover;
   position: fixed;
-  right: 0.1rem;
-  top: 0.1rem;
-  animation: rote 3s linear infinite;
+  right: 0.4rem;
+  top: 0.4rem;
+  animation: rote 2s linear infinite;
   animation-play-state: paused;
   z-index: 30;
 }
-#box1 {
+#box {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+#box .page1 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../img/bg.webp) center center no-repeat;
+  animation: scole 0.5s linear;
+  animation-fill-mode: forwards;
+}
+#box .page1 .rote1 {
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 7vw;
+  top: 20vw;
+  animation: rote 5s ease-in-out infinite;
+}
+#box .page1 .rote1 img {
   width: 100%;
   height: 100%;
-  background: #333;
+}
+#box .page1 .rote2 {
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  right: 7vw;
+  top: 20vw;
+  animation: rote 3s ease-in-out infinite;
+}
+#box .page1 .rote2 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page1 .rote3 {
+  width: 20vw;
+  height: 50vw;
+  position: absolute;
+  left: -2vw;
+  top: 100vw;
+  animation: movedown 2s ease-out infinite;
+}
+#box .page1 .rote3 img:nth-child(1) {
+  position: absolute;
+  left: 0;
+  top: 15vw;
+}
+#box .page1 .out {
+  width: 100vw;
+  height: 160vw;
+  position: absolute;
+  top: 20vw;
+  animation: big 1s ease-out;
+}
+#box .page1 .out img {
+  width: 100%;
+  height: 100%;
+}
+#box .page1 .in {
+  width: 80vw;
+  height: 80vw;
+  position: absolute;
+  left: 9vw;
+  top: 50vw;
+  animation: rote 8s linear infinite;
+}
+#box .page1 .in img {
+  width: 100%;
+  height: 100%;
+}
+#box .page1 .jianli1 {
+  position: absolute;
+  left: 20vw;
+  top: 80vw;
+}
+#box .page1 .jianli2 {
+  position: absolute;
+  left: 35vw;
+  top: 80vw;
+}
+#box .page1 .jianli3 {
+  position: absolute;
+  left: 55.5vw;
+  top: 80.5vw;
+  animation: rev 2s ease-in-out infinite;
+}
+#box .page1 .page1text {
+  width: 90vw;
+  position: absolute;
+  left: 5vw;
+  bottom: 10vw;
+  font-size: 4vw;
+  text-align: center;
+  color: rgba(54, 255, 251, 0.619608);
+}
+#box .page2 {
   position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../img/bg.webp) center center no-repeat;
+  animation: scole 0.5s linear;
+  animation-fill-mode: forwards;
+}
+#box .page2 .rote1 {
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  right: 7vw;
+  bottom: 40vw;
+  animation: rote 5s ease-in-out infinite;
+}
+#box .page2 .rote1 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .rote2 {
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 7vw;
+  top: 20vw;
+  animation: rote 3s ease-in-out infinite;
+}
+#box .page2 .rote2 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .rote4 {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  right: -10vw;
+  top: -10vw;
+  animation: rote 5s linear infinite;
+}
+#box .page2 .rote4 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .rote5 {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  left: -10vw;
+  bottom: -10vw;
+  animation: rote 5s linear infinite;
+}
+#box .page2 .rote5 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .page2img {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  left: 30vw;
+  top: 20vw;
+}
+#box .page2 .page2img .rote6 {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .page2img .rote6 img {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  width: 90%;
+  height: 90%;
+}
+#box .page2 .page2img .rote7 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .page2img .rote7 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page2 .page2img .rote8 {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  animation: rote 3s linear infinite;
+}
+#box .page2 .page2img .rote8 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+#box .page2 .page2img .rote9 {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  left: 10%;
+  top: 10%;
+}
+#box .page2 .page2img .rote9 img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+#box .page2 .line1 {
+  position: absolute;
+  top: 60vw;
+  width: 55vw;
+  height: 2vw;
+}
+#box .page2 .line1 img {
+  width: 100%;
+}
+#box .page2 .line2 {
+  position: absolute;
+  top: 68vw;
+  left: 43.5vw;
+}
+#box .page2 .line3 {
+  position: absolute;
+  top: 64vw;
+  left: 52vw;
+}
+#box .page2 .page2text {
+  position: absolute;
+  top: 57vw;
+  left: 5vw;
+  color: rgba(54, 255, 251, 0.619608);
+  font-size: 5vw;
+}
+#box .page2 .page2text i {
+  position: absolute;
+  top: 8vw;
+  width: 51vw;
+  animation: bounceInLeft 1s ;
+}
+#box .page2 .page2text span {
+  position: absolute;
+  left: 46vw;
+  top: 19vw;
+  width: 30vw;
+  animation: bounceInRight 1s;
+}
+#box .page2 .information {
+  width: 70vw;
+  height: 70vw;
+  position: absolute;
+  left: 15vw;
+  bottom: 20vw;
+  font-size: 5vw;
+  color: rgba(54, 255, 251, 0.619608);
+}
+#box .page3 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../img/bg.webp) center center no-repeat;
+  animation: scole 0.5s linear;
+  animation-fill-mode: forwards;
+}
+#box .page3 .sanjiao {
+  width: 24vw;
+  height: 24vw;
+  position: absolute;
+  left: 10vw;
+  top: 15vw;
+}
+#box .page3 .sanjiao > div {
+  width: 12vw;
+  height: 12vw;
+  position: absolute;
+  top: 7vw;
+  left: 6vw;
+}
+#box .page3 .sanjiao > div > svg {
+  animation: rote 8s linear infinite;
+}
+#box .page3 .skill {
+  position: absolute;
+  left: 40vw;
+  top: 20vw;
+  color: #3dfffc;
+  font-size: 6vw;
+}
+#box .page3 .skill > p {
+  width: 50vw;
+  height: 10vw;
+  border-bottom: 0.5vw solid #3dfffc;
+}
+#box .page3 .skill > span {
+  font-size: 4vw;
+}
+#box .page3 .js {
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 65vw;
+  top: 80vw;
+}
+#box .page3 .js svg {
+  animation: rote 5s linear infinite;
+}
+#box .page3 .js span {
+  color: #3dfffc;
+  font-size: 10vw;
+  position: absolute;
+  left: 8vw;
+  top: 5vw;
+}
+#box .page3 .css {
+  top: 50vw;
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 10vw;
+}
+#box .page3 .css svg {
+  animation: rote 5s linear infinite;
+}
+#box .page3 .css span {
+  color: #3dfffc;
+  font-size: 10vw;
+  position: absolute;
+  left: 3vw;
+  top: 5vw;
+}
+#box .page3 .vue {
+  top: 140vw;
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 65vw;
+}
+#box .page3 .vue svg {
+  animation: rote 5s linear infinite;
+}
+#box .page3 .vue span {
+  color: #3dfffc;
+  font-size: 10vw;
+  position: absolute;
+  left: 3vw;
+  top: 5vw;
+}
+#box .page3 .react {
+  top: 110vw;
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 10vw;
+}
+#box .page3 .react svg {
+  animation: rote 5s linear infinite;
+}
+#box .page3 .react span {
+  color: #3dfffc;
+  font-size: 6vw;
+  position: absolute;
+  left: 3vw;
+  top: 8vw;
+}
+#box .page3 .mi {
+  top: 95vw;
+  width: 25vw;
+  height: 25vw;
+  position: absolute;
+  left: 40vw;
+}
+#box .page3 .mi svg {
+  animation: rote 5s linear infinite;
+}
+#box .page3 .mi span {
+  color: #3dfffc;
+  font-size: 10vw;
+  position: absolute;
+  left: 5vw;
+  top: 5vw;
 }

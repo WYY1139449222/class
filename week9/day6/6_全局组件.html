@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <count></count>
+        <h1>{{name}}</h1>
+        <count></count>
+        
+    </div>
+    <template id='mycount'>
+        <div>
+            <button @click='changeName'>按钮</button>
+            hello world {{name2}}
+        </div>
+    </template>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+        Vue.component(组件名，options)
+        组件名可以是烤串命名 和 驼峰命名 但使用的时候 都得是烤串命名
+        组件名不能是已经存在的html标签
+
+        组件的模板只能有一个根元素，与transition 标签类似
+
+
+        options 中的属性 与根实例基本一致 只是组件的data属性必须是一个函数
+                这是为了保证组件的独立性
+    */
+    Vue.component('count',{
+        // 命名的时候 不能使用已经存在的html标签
+        template:'#mycount',
+        data(){
+            //保证数据的独立性
+            return {
+                name:666
+            }
+        },
+        methods:{
+            changeName(){
+                //this 都是当前的实例
+                //在vue中 组件就是 vue实例
+                //vm 我们称为根实例 或者 根组件
+                this.name = Math.random()
+                console.log(this);
+                
+            }
+        },
+        computed:{
+            name2(){
+                return this.name + 'computed'
+            }
+        }
+
+    })
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰"
+        },
+       
+    })
+</script>

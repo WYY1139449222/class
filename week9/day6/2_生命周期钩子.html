@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model='name'>
+        <h1>{{name}}</h1>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+        生命周期 钩子函数 是vue提供的 几个在对应时间执行的函数
+            我们可以在 对应的函数中执行自己对应的事情
+            //create mount update destroy
+    */
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰",
+            age:10
+
+        },
+        beforeCreate(){
+            console.log('beforeCreate');
+        },
+        created(){
+            //一般初始化的操作 都会放到created钩子中
+            //这个钩子是第一个能够获取当前实例数据的 钩子
+            console.log('created');
+        },
+        beforeMount(){
+            console.log('beforeMount');
+        },
+        mounted(){
+            //获取dom的操作 一般都在mounted中执行
+            console.log('mounted');
+        },
+        beforeUpdate(){
+            //在数据更新 并且更新了视图 会触发更新的这两个钩子函数
+            console.log('beforeUpdate');
+        },
+        updated(){
+            //在updeted 这个钩子函数中 我们不能编写连续触发试图更新的操作
+            console.log('updated');
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy');
+        },
+        destroyed(){
+            console.log('destroyed');
+        }
+    })
+    vm.$destroy();//切断了数据更新试图的操作 试图更新数据没有切断
+
+</script>

@@ -43,7 +43,7 @@
 </head>
 <body>
     <div id="app">
-        <span v-for = '(item,index) in ary' @click = 'change(index)' >
+        <span v-for = '(item,index) in ary' @click = 'change(index,item)' :class='{current:qqq==index}'>
             {{item}}
         </span>
         <div class="body" v-for = 'item in arr' >{{item}}</div>
@@ -58,11 +58,13 @@
             name:"珠峰",
             ary:['js','css','html','vue'],
             body:['JS666','css学的好','html好','vue真的好'],
-            arr:['JS666']
+            arr:['JS666'],
+            qqq:0
         },
         methods:{
-            change(n){
-               this.arr = [this.body[n]]
+            change(n,item){
+                this.arr = [this.body[n]];
+                this.qqq=n
             }
         }
     })

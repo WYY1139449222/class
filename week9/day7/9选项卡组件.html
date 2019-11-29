@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tabBox{
+            display: flex;
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            list-style: none;
+        }
+        .tabBox>li{
+            border:1px solid pink;
+            margin-right: 1px;
+            flex: 1;
+            cursor: pointer;
+            user-select: none;
+            color: aqua;
+            max-width: 80px;
+        }
+        .tabBox>li.current{
+            background: pink;
+        }
+        .tabBox>li>span{
+            float: right;
+            margin-right: 10px;
+            color:salmon
+        }
+        .tabBox>li>span:hover{
+            display: inline-block;
+            transform: scale(1.5);
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <my-tab :data='ary' @change='fn' @tab-remove='tabRm' v-model='index'></my-tab>
+    </div>
+</body>
+</html>
+<template id="tab">
+    <ul class="tabBox">
+        <li v-for='(item,index) in data' :class='{current:index==value}' @click='tabFn(index,item)'>{{item}} &nbsp;&nbsp;&nbsp;
+            <span @click.stop='delfn(index,item)'>x</span>
+        </li>
+    </ul>
+</template>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('my-tab',{
+        template:"#tab",
+        props:['data','value'],
+        data(){
+            return {
+                flag:0
+            }
+        },
+        methods:{
+            tabFn(n,item){
+                this.$emit('input',n)
+                this.$emit('change',n,item)
+            },
+            delfn(n,item){
+                
+                // this.data.splice(n,1)//在子组件直接修改父组件的数组
+                this.$emit('tab-remove',n,item)
+            }
+        }
+    })
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰",
+            ary:['css','html','js','vue','node'],
+            index:3
+        },
+        methods:{
+            fn(n,item){
+                console.log(n,item);
+            },
+            tabRm(n,item){
+                this.ary.splice(n,1)
+            }
+        }
+    })
+</script>

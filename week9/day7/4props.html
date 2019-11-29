@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+        <son :data='19' :a='1' :b='2'></son>
+    </div>
+</body>
+<template id="son">
+    <div>
+        <h2>父组件传进来的数据是{{data}}</h2>
+    </div>
+</template>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    let son={
+        template:'#son',
+        // props:['data'],
+        /* props:{
+            data:{
+                type:Number,//传进来数据的类型限制
+                // default:0,//不传数据时默认的数据
+                // required:true,//参数是否必须的意思
+                validator:function(val){
+                    console.log(val);
+                    
+                    //自定义参数规则
+                    return val>18
+                }
+            }
+        } */
+        props:{
+            data:Number,
+            a:Number
+        },
+        created(){
+            //$attrs放置的是那些没有被props接收的那些参数
+            console.log(this.name123);
+            
+        },
+        inject:['name123']
+
+    }
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰"
+        },
+        components:{
+            son
+        },
+        provide:{
+            name123:this.name
+        }
+    })
+</script>

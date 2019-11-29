@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        query 传参  link上面给to属性设置query 组件通过$route.query获取
+     -->
+    <div id="app">
+        <h1>{{name}}</h1>
+        <!-- <router-link to='/home?a=1&b=2' tag='button'>首页</router-link>
+        <router-link to='/list?c=11&d=22' tag='button'>列表页</router-link> -->
+        <router-link :to='{path:"/home",query:{q:12,w:13}}'>首页</router-link>
+        <router-link :to='{path:"/list",query:{a:122,s:133}}'>列表页</router-link>
+        <router-view></router-view>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script>
+<script>
+    let home = {
+        template:"<h2>首页</h2>",
+       created(){
+        console.log(this.$route.query);
+           
+       }
+    }
+    let list = {
+        template:"<h2>列表页</h2>",
+        created(){
+           console.log(this.$route.query);
+           
+       }
+    }
+    
+    Vue.use(VueRouter);
+    
+     const router = new VueRouter({
+        routes: [
+            { path: '/list', component: list },
+            { path: '/home', component: home }
+       ]
+    });
+    let vm = new Vue({
+        el:'#app',
+        router,
+        data:{
+            name:"珠峰"
+        }
+    })
+</script>
