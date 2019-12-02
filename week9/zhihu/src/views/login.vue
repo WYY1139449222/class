@@ -6,10 +6,10 @@
     </header>
     <h2>密码登录</h2>
     <div class="inpBox">
-      <input type="text" placeholder="请输入用户名或手机号" />
-      <input type="password" placeholder="请输入密码" />
+      <input type="text" v-model="name" placeholder="请输入用户名或手机号" />
+      <input type="password" v-model="psw" placeholder="请输入密码" />
     </div>
-    <div class="loginBtn">登录</div>
+    <div class="loginBtn" @click="login">登录</div>
     <div class="cl help">
       <div class="lt">海外手机号登录</div>
       <div class="rt">需要帮助</div>
@@ -23,14 +23,41 @@
 </template>
 <script>
 // @ is an alias to /src
+import { login } from "@/api/login.js";
 export default {
   name: "login",
   data() {
-    return {};
+    return {
+      name: "",
+      psw: ""
+    };
   },
   methods: {
     close() {
       this.$router.back(); //点击关闭按钮 回到原来的页面
+    },
+    login() {
+      if (!this.name || !this.psw) {
+        alert("用户名密码不能够为空");
+        return;
+      }
+      login({
+        name: this.name,
+        password: this.psw
+      })
+        .then(data => {
+          //登录成功之后 我们要把后台给的token 存储到本地localStorage中
+          console.log(data);
+          localStorage.setItem("token", "asdfghjkdsasdfghfds"),
+          this.$store.commit("stateChange", { loginState: true });
+          this.$router.push("/home");
+        })
+        .catch(err => {
+          console.log(err);
+          localStorage.setItem("token", "asdfghjkdsasdfghfds"),
+          this.$store.commit("stateChange", { loginState: true });
+          this.$router.push("/home");
+        });
     }
   },
   components: {}

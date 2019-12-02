@@ -51,6 +51,26 @@ body {
     transform: translateY(30vw);
   }
 }
+@keyframes movepage3 {
+  0% {
+    opacity: 0;
+    transform: translateY(-20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes movepage31 {
+  0% {
+    opacity: 0;
+    transform: translateY(20vw);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 @keyframes bounceInLeft {
   0% {
     transform: translateX(-50vw);
@@ -83,6 +103,28 @@ body {
   }
   100% {
     transform: translateX(0);
+  }
+}
+@keyframes wd {
+  0% {
+    width: 0vw;
+  }
+  100% {
+    width: 75vw;
+  }
+}
+@keyframes opact {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 .bgm {
@@ -392,14 +434,21 @@ body {
 #box .page3 .skill > p {
   width: 50vw;
   height: 10vw;
+  animation: movepage3 0.7s ease-out;
+}
+#box .page3 .skill > h6 {
+  width: 50vw;
   border-bottom: 0.5vw solid #3dfffc;
 }
 #box .page3 .skill > span {
   font-size: 4vw;
+  display: block;
+  margin-top: 1vw;
+  animation: movepage31 0.7s ease-out;
 }
 #box .page3 .js {
-  width: 25vw;
-  height: 25vw;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
   left: 65vw;
   top: 80vw;
@@ -409,15 +458,38 @@ body {
 }
 #box .page3 .js span {
   color: #3dfffc;
-  font-size: 10vw;
+  font-size: 7vw;
   position: absolute;
-  left: 8vw;
+  left: 7vw;
   top: 5vw;
+}
+#box .page3 .js .jsIn {
+  width: 72vw;
+  height: 15vw;
+  position: absolute;
+  top: 2.5vw;
+  right: 2.5vw;
+  background: rgba(255, 255, 255, 0.13);
+  text-indent: 5vw;
+  color: #3dfffc;
+  border-radius: 20vw;
+  animation: wd 2s linear;
+}
+#box .page3 .js .jsIn > span {
+  font-size: 5vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 15vw;
+  animation: opact 2.8s linear;
+  overflow: hidden;
 }
 #box .page3 .css {
   top: 50vw;
-  width: 25vw;
-  height: 25vw;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
   left: 10vw;
 }
@@ -426,15 +498,40 @@ body {
 }
 #box .page3 .css span {
   color: #3dfffc;
-  font-size: 10vw;
+  font-size: 7vw;
   position: absolute;
   left: 3vw;
   top: 5vw;
 }
+#box .page3 .css .cssIn {
+  width: 72vw;
+  height: 15vw;
+  margin-right: 5vw;
+  position: absolute;
+  top: 2.5vw;
+  left: 2.5vw;
+  background: rgba(255, 255, 255, 0.13);
+  text-indent: 5vw;
+  color: #3dfffc;
+  border-radius: 20vw;
+  animation: wd 2s linear;
+}
+#box .page3 .css .cssIn > span {
+  font-size: 5vw;
+  position: absolute;
+  text-indent: 20vw;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 15vw;
+  animation: opact 2.8s linear;
+  overflow: hidden;
+}
 #box .page3 .vue {
   top: 140vw;
-  width: 25vw;
-  height: 25vw;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
   left: 65vw;
 }
@@ -443,15 +540,38 @@ body {
 }
 #box .page3 .vue span {
   color: #3dfffc;
-  font-size: 10vw;
+  font-size: 7vw;
   position: absolute;
   left: 3vw;
   top: 5vw;
 }
+#box .page3 .vue .vueIn {
+  width: 72vw;
+  height: 15vw;
+  position: absolute;
+  top: 2.5vw;
+  right: 2.5vw;
+  background: rgba(255, 255, 255, 0.13);
+  text-indent: 5vw;
+  color: #3dfffc;
+  border-radius: 20vw;
+  animation: wd 2s linear;
+}
+#box .page3 .vue .vueIn > span {
+  font-size: 5vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 15vw;
+  animation: opact 2.8s linear;
+  overflow: hidden;
+}
 #box .page3 .react {
   top: 110vw;
-  width: 25vw;
-  height: 25vw;
+  width: 20vw;
+  height: 20vw;
   position: absolute;
   left: 10vw;
 }
@@ -460,10 +580,35 @@ body {
 }
 #box .page3 .react span {
   color: #3dfffc;
-  font-size: 6vw;
+  font-size: 5vw;
   position: absolute;
-  left: 3vw;
-  top: 8vw;
+  left: 2.5vw;
+  top: 7vw;
+}
+#box .page3 .react .reactIn {
+  width: 72vw;
+  height: 15vw;
+  position: absolute;
+  text-align: left;
+  top: 2.5vw;
+  left: 2.5vw;
+  background: rgba(255, 255, 255, 0.13);
+  color: #3dfffc;
+  border-radius: 20vw;
+  animation: wd 2s linear;
+}
+#box .page3 .react .reactIn > span {
+  font-size: 5vw;
+  position: absolute;
+  padding-right: 5vw;
+  text-indent: 20vw;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 15vw;
+  animation: opact 2.8s linear;
+  overflow: hidden;
 }
 #box .page3 .mi {
   top: 95vw;
@@ -481,4 +626,46 @@ body {
   position: absolute;
   left: 5vw;
   top: 5vw;
+}
+#box .page4 {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: url(../img/bg.webp) center center no-repeat;
+  animation: scole 0.5s linear;
+  animation-fill-mode: forwards;
+}
+#box .page4 .rote4 {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  right: -10vw;
+  top: -10vw;
+  animation: rote 5s linear infinite;
+}
+#box .page4 .rote4 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page4 .rote5 {
+  width: 40vw;
+  height: 40vw;
+  position: absolute;
+  left: -10vw;
+  bottom: -10vw;
+  animation: rote 5s linear infinite;
+}
+#box .page4 .rote5 img {
+  width: 100%;
+  height: 100%;
+}
+#box .page4 .bg {
+  width: 70vw;
+  height: 80vh;
+  background: url(../img/page4bg.webp) center center no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: 15vw;
+  top: 0;
 }

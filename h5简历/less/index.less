@@ -49,6 +49,26 @@ html,body{
         transform: translateY(30vw);
     }
 }
+@keyframes movepage3{
+    0%{
+        opacity: 0;
+        transform: translateY(-20vw);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes movepage31{
+    0%{
+        opacity: 0;
+        transform: translateY(20vw);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 @keyframes bounceInLeft {
     0% {
       transform: translateX(-50vw);
@@ -83,7 +103,28 @@ html,body{
       transform: translateX(0);
     }
   }
-  
+@keyframes wd{
+    0%{
+        width:0vw;
+    }
+    100%{
+        width: 75vw;
+    }
+}
+@keyframes opact{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    100%{
+       opacity: 1;
+    }
+}
 .bgm{
     background: url(../img/bgmBtn.svg);
     width: 0.7rem;
@@ -395,15 +436,22 @@ html,body{
             >p{
                 width: 50vw;
                 height: 10vw;
+                animation: movepage3 0.7s ease-out;
+            }
+            >h6{
+                width: 50vw;
                 border-bottom: 0.5vw solid rgb(61, 255, 252);
             }
             >span{
                 font-size: 4vw;
+                display: block;
+                margin-top: 1vw;
+                animation: movepage31 0.7s ease-out;
             }
         }
         .js{
-            width: 25vw;
-            height: 25vw;
+            width: 20vw;
+            height: 20vw;
             position: absolute;
             left: 65vw;
             top: 80vw;
@@ -412,16 +460,40 @@ html,body{
             }
             span{
                 color:rgb(61, 255, 252);
-                font-size: 10vw;
+                font-size: 7vw;
                 position: absolute;
-                left: 8vw;
+                left: 7vw;
                 top: 5vw;
+            }
+            .jsIn{
+                width: 72vw;
+                height: 15vw;
+                position: absolute;
+                top: 2.5vw;
+                right:2.5vw;
+                background: rgba(255, 255, 255, 0.13);
+                text-indent: 5vw;
+                color: #3dfffc;
+                border-radius: 20vw;
+                animation: wd 2s linear;
+                >span{
+                    font-size: 5vw;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 15vw;
+                    animation: opact 2.8s  linear;
+                    overflow:hidden;
+                    
+                }
             }
         }
         .css{
             top: 50vw;
-            width: 25vw;
-            height: 25vw;
+            width: 20vw;
+            height: 20vw;
             position: absolute;
             left: 10vw;
             svg{
@@ -429,16 +501,42 @@ html,body{
             }
             span{
                 color:rgb(61, 255, 252);
-                font-size: 10vw;
+                font-size: 7vw;
                 position: absolute;
                 left: 3vw;
                 top: 5vw;
             }
+            .cssIn{
+                width: 72vw;
+                height: 15vw;
+                margin-right: 5vw;
+                position: absolute;
+                top: 2.5vw;
+                left:2.5vw;
+                background: rgba(255, 255, 255, 0.13);
+                text-indent: 5vw;
+                color: #3dfffc;
+                border-radius: 20vw;
+                animation: wd 2s linear;
+                >span{
+                    font-size: 5vw;
+                    position: absolute;
+                    text-indent: 20vw;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 15vw;
+                    animation: opact 2.8s  linear;
+                    overflow:hidden;
+                    
+                }
+            }
         }
         .vue{
             top: 140vw;
-            width: 25vw;
-            height: 25vw;
+            width: 20vw;
+            height: 20vw;
             position: absolute;
             left: 65vw;
             svg{
@@ -446,16 +544,40 @@ html,body{
             }
             span{
                 color:rgb(61, 255, 252);
-                font-size: 10vw;
+                font-size: 7vw;
                 position: absolute;
                 left: 3vw;
                 top: 5vw;
             }
+            .vueIn{
+                width: 72vw;
+                height: 15vw;
+                position: absolute;
+                top: 2.5vw;
+                right:2.5vw;
+                background: rgba(255, 255, 255, 0.13);
+                text-indent: 5vw;
+                color: #3dfffc;
+                border-radius: 20vw;
+                animation: wd 2s linear;
+                >span{
+                    font-size: 5vw;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 15vw;
+                    animation: opact 2.8s  linear;
+                    overflow:hidden;
+                    
+                }
+            }
         }
         .react{
             top: 110vw;
-            width: 25vw;
-            height: 25vw;
+            width: 20vw;
+            height: 20vw;
             position: absolute;
             left: 10vw;
             svg{
@@ -463,10 +585,36 @@ html,body{
             }
             span{
                 color:rgb(61, 255, 252);
-                font-size: 6vw;
+                font-size: 5vw;
                 position: absolute;
-                left: 3vw;
-                top: 8vw;
+                left: 2.5vw;
+                top: 7vw;
+            }
+            .reactIn{
+                width: 72vw;
+                height: 15vw;
+                position: absolute;
+                text-align: left;
+                top: 2.5vw;
+                left:2.5vw;
+                background: rgba(255, 255, 255, 0.13);
+                color: #3dfffc;
+                border-radius: 20vw;
+                animation: wd 2s linear;
+                >span{
+                    font-size: 5vw;
+                    position: absolute;
+                    padding-right: 5vw;
+                    text-indent: 20vw;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    line-height: 15vw;
+                    animation: opact 2.8s  linear;
+                    overflow:hidden;
+                    
+                }
             }
         }
         .mi{
@@ -487,5 +635,47 @@ html,body{
             }
         }
       
+    }
+    .page4{
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        background: url(../img/bg.webp) center center no-repeat;
+        animation: scole 0.5s linear;
+        animation-fill-mode:forwards;
+        .rote4{
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            right: -10vw;
+            top: -10vw;
+            animation: rote 5s linear infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .rote5{
+            width: 40vw;
+            height: 40vw;
+            position: absolute;
+            left: -10vw;
+            bottom: -10vw;
+            animation: rote 5s linear infinite;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .bg{
+            width: 70vw;
+            height: 80vh;
+            background: url(../img/page4bg.webp) center center no-repeat;
+            background-size: cover;
+            position: absolute;
+            left: 15vw;
+            top: 0;
+        }
     }
 }
