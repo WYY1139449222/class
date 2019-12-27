@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let obj = {
+        a:1,
+        b:2,
+        c:[1,2,3],
+        d:{
+            e:1
+        }
+    }
+    function json(obj){
+        let str='';
+        if( obj instanceof Object){
+            for (const k in obj) {
+                if(obj[k] instanceof Array){
+                    str+=`"${k}"`+':['+obj[k]+'],'
+                }else if(obj[k] instanceof Object){
+                    str+=`"${k}"`+':'+json(obj[k])+','
+                }else{
+                    str+=`"${k}"`+':'+obj[k]+','
+                }
+            }
+        }
+        return  "{"+str.slice(0,-1)+"}"
+    }
+    console.log(json(obj));
+    console.log(JSON.stringify(obj));
+    
+    let a=[1,3,4,5],b=[2,4,5,6];
+    function find(a,b){
+        let ary = a.concat(b);
+        for (let i = 0; i < ary.length; i++) {
+            for (let j = 0; j < ary.length; j++) {
+                if(ary[i]<ary[j]){
+                    let n = ary[i];
+                    ary[i]=ary[j];
+                    ary[j]=n;
+                }
+            }
+        } 
+        if(ary.length/2==parseInt(ary.length/2)){
+            return (ary[ary.length/2-1]+ary[ary.length/2])/2
+        }else{
+            return ary[Math.floor(ary.length/2)]
+        }
+    }
+    console.log(find(a,b));
+    
+</script>

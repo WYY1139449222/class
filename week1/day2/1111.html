@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        #box1 {
+            width: 200px;
+            height: 260px;
+            font-size: 20px;
+            border: 1px solid red;
+        }
+
+        #box1>p {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box1 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid blue;
+            background: blue;
+        }
+
+        #box3 {
+            width: 300px;
+            height: 300px;
+            background: burlywood;
+            position: fixed;
+            left: 400px;
+            top: 100px;
+        }
+
+        #box3>p {
+            height: 20px;
+            line-height: 20px;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1">
+        <p>
+            <img src="http://image.baidu.com/search/detail?z=0&word=%E7%9F%B3%E5%B9%BF%E6%99%BA&hs=0&pn=8&spn=0&di=0&pi=45525387133&tn=baiduimagedetail&is=0%2C0&ie=utf-8&oe=utf-8&cs=3530254646%2C2838830117&os=&simid=&adpicid=0&lpn=0&fm=&sme=&cg=&bdtype=-1&oriquery=&objurl=http%3A%2F%2Ff.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fb151f8198618367aa7f3cc7424738bd4b31ce525.jpg&fromurl=&gsm=&catename=pcindexhot&islist=&querylist="
+                alt="">
+        </p>
+    </div>
+    <div id="box2">
+        <p>
+            <span></span>
+        </p>
+    </div>
+</body>
+
+</html>
+<script>
+    /*
+    {
+        "0":{
+            id:0,
+            ele:div,
+            pid:-1
+        },
+        "1":{
+            id:1,
+            ele:p,
+            pid:0
+        },
+        "2":{
+            id:2,
+            ele:img,
+            pid:1
+        }
+    }
+*/
+    let body = document.body;
+    let ary = [...body.getElementsByTagName('*')].filter(item => item.nodeName != "SCRIPT");
+    let n = 0;
+    function get(list, n) {
+        let obj = {};
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].parentNode == body) {
+                obj[i] = {
+                    id: i,
+                    ele: list[i],
+                    nodeName: list[i].nodeName.toLowerCase(),
+                    pid: -1,
+                    level: getNum(list[i], n)
+                }
+            } else {
+                obj[i] = {
+                    id: i,
+                    ele: list[i],
+                    nodeName: list[i].nodeName.toLowerCase(),
+                    pid: list.indexOf(list[i].parentNode),
+                    level: getNum(list[i], n)
+                }
+            }
+        }
+        return obj
+    }
+    function renderS(ary, n) {
+        let obj = get(ary, n);
+        console.log(obj);
+        let str = ''
+        for (const key in obj) {
+            if (obj[key].level) {
+                let s = '';
+                for (let i = 0; i < obj[key].level; i++) {
+                    s += '-';
+                }
+                str += `<p>${s}${obj[key].nodeName}</p>`
+            } else {
+                str += `<p>${obj[key].nodeName}</p>`
+            }
+        }
+        let div = document.createElement('div');
+        div.id = 'box3';
+        div.innerHTML = str;
+        body.appendChild(div)
+        let ps = div.getElementsByTagName('p');
+        for (let i = 0; i < ps.length; i++) {
+            ps[i].style.top = i * 20 + 'px'
+        }
+        addevent(div)
+    }
+    renderS(ary, n);
+
+    function getNum(ele, n) {
+        //获取层级
+        let temp = ele.parentNode;
+        if (temp == body) {
+            return n
+        } else {
+            return getNum(temp, ++n)
+        }
+    }
+    function addevent(div) {
+        let ps = div.getElementsByTagName('p');
+        let startId='';
+        let endId='';
+        for (let i = 0; i < ps.length; i++) {
+
+            
+            ps[i].onmousedown = function (e) {
+                startId=i;
+                if (e.target.nodeName == 'P') {
+                    let top = parseInt(e.target.style.top)
+                    let startTop = e.pageY;
+                    console.log(e.pageY - div.offsetTop);
+                    let fn = function (e) {
+                        e.target.style.top = (top + e.pageY - startTop<=0?0:top + e.pageY - startTop) + 'px'
+                    }
+                    ps[i].addEventListener('mousemove',fn,false)
+                    ps[i].onmouseup = function(e){
+                        console.log(parseInt(e.target.style.top));
+                        let num = parseInt(e.target.style.top);
+
+                        for (let j = 0; j < ps.length; j++) {
+                            if(num+10<=(j+1)*20&&(num+10)>j*20){
+                                endId=j;
+                            }
+                            
+                        }
+                        
+
+
+
+
+
+                        ps[i].removeEventListener('mousemove',fn,false);
+                    }
+                }
+            }
+            
+
+        }
+
+    }
+
+</script>

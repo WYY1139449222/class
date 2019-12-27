@@ -11,7 +11,7 @@
         v-model="psw"
         show-password
       ></el-input>
-      <el-button class="btn" type="primary" @click="login" >登录</el-button>
+      <el-button class="btn" type="primary" @click="login">登录</el-button>
     </div>
     <p>北京珠峰世纪技术培训有限公司 京ICP备09041920号 京公网安备110108400531号</p>
   </div>
@@ -19,7 +19,7 @@
 <script>
 // @ is an alias to /src
 import { login } from "@/api/login.js";
-import md5 from 'md5'
+import md5 from "md5";
 export default {
   name: "login",
   data() {
@@ -40,15 +40,22 @@ export default {
         password: md5(this.psw)
       };
 
-      login(obj).then(data=>{
-          console.log(data);
-          if(data.code==0){
-              this.$router.push('/')
+      login(obj)
+        .then(data => {
+          // console.log(data);
+          if (data.code == 0) {
+            localStorage.setItem('username',obj.account)
+            this.$alert("登录成功", "提示", {
+              confirmButtonText: "确定",
+              callback: () => {
+                this.$router.push("/");
+              }
+            });
           }
-      }).catch(err=>{
+        })
+        .catch(err => {
           console.log(err);
-          
-      });
+        });
     }
   }
 };

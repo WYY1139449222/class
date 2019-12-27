@@ -1,18 +1,41 @@
 export default [
     {
-        path:'/my',
+        path:'/crm/my',
         name:'my',
-        component:() => import(/* webpackChunkName: "login" */ '@/components/customer/my')
+        component:() => import(/* webpackChunkName: "customer" */ '@/components/customer/my'),
+        meta:{
+            type:'crm',
+            rootTil:'客户管理',
+            til:'我的客户',
+            icon:'el-icon-user-solid',
+            power:''
+        }
 
     },
     {
-        path:'/addCustomer',
+        path:'/crm/addCustomer',
         name:'addCustomer',
-        component:() => import(/* webpackChunkName: "login" */ '@/components/customer/add')
+        component:() => import(/* webpackChunkName: "customer" */ '@/components/customer/add'),
+        meta:{
+            type:'crm',
+            rootTil:'客户管理',
+            til:'新增客户',
+            icon:'el-icon-user-solid',
+            power:''
+           
+        }
     },
     {
-        path:'/add',
-        name:'add',
-        component:() => import(/* webpackChunkName: "login" */ '@/components/customer/all')
+        path:'/crm/all',
+        name:'all',
+        component:() => import(/* webpackChunkName: "customer" */ '@/components/customer/all'),
+        meta:{
+            type:'crm',
+            rootTil:'客户管理',
+            til:'全部客户',
+            icon:'el-icon-user-solid',
+            power:'allcustomer'
+        }
+       
     }
 ]

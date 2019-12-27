@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{name}}</h1>
+    </div>
+</body>
+</html>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    /* 
+        el
+        template
+        data 根实例是对象 其他组件都是函数
+        methods 函数 不能写箭头函数
+        computed 计算属性 简写{aaa(){}}  复杂  qq:{get(){},set(){}}
+        watch  已经存在的属性 
+        filters:{}
+        directives:{}//自定义指令 Vue.directive('name',函数)
+
+
+        beforeCreate created
+        beforeMount  mounted
+        beforeUpdate  updated
+        beforeDestroy destroyed
+
+        <keep-alive></keep-alive>
+        activated  deactivated
+
+        errorCapy
+
+        components
+        mixins:{}   私有 的 混入  或如只能补  不能顶替
+
+        props 接收父组件数据的属性 简写是一个数组
+        props:{
+            type  default required validator
+        }
+
+
+        render:(h)=>{
+            return h('div',{attrs},标签内容)
+        }
+        标签内容 可以是一段文本 也可以是一个新的虚拟DOM 也可以是多个虚拟DOM,以哦那个数组抱起来即可
+    */
+    let vm = new Vue({
+        el:'#app',
+        data:{
+            name:"珠峰"
+        },
+        mixins:{
+            data:{
+                name:'123',
+                age:123
+            }
+        },
+        watch: {
+            name(newv,oldV){
+
+            },
+            name:{
+                deep:true,
+                //深度监听 一般是引用类型对象
+                immediate:true,//上来先执行一次
+                handler(oldV,newV){
+
+                }
+            }
+        },
+
+    })
+</script>

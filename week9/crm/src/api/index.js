@@ -1,39 +1,57 @@
-import axios from 'axios'
+import http from './http'
 
-let url = process.env.NODE_ENV !== 'production'?'':'https://www.zhihu.com/api/v4';
-//根据当前到底是开发环境还是生产环境来决定 基础路径是哪个 开发环境下 不需要基础路径
-//因为开发环境 我们就是让请求去本地localhost：8080，node会根据配置的 proxy代理
-//将请求 转接到 对应的远程地址   proxy只在开发环境下有用 生产环境下 是没用的
-const http = axios.create({
-    baseURL:url,
-    transformRequest(data){
-        // console.log(data);
-        let str='';
-        for(let k in data){
-          str+=`${k}=${data[k]}&`
+export function judgeLogin(){
+    return http.get('/user/login').then(data=>{
+        return data.code==0
+    })
+}
+
+//请求部门列表数据
+export function  getDpList(){
+    return http.get('/department/list')
+}
+
+//删除部门列表的某个数据
+export function delDpList(departmentId){
+    return http.get('/department/delete',{
+      params:{departmentId}
+    })
+}
+//新增部门信息
+export function addDpList(option){
+    return http.post('/department/add',option)
+}
+
+//更新部门
+
+export function undateDpList(option){
+    return http.post('/department/update',option)
+}
+//获取用户列表
+export function getUserList(option){
+    return http.get('/user/list',{
+        params:option
+    })
+}
+//获取职务列表
+export function getJobList(){
+    return http.get('/job/list')
+}
+//新增员工
+export function addUser(option){
+    return http.post('/user/add',option)
+}
+//删除员工
+
+export function delUser(userId){
+    return http.get('/user/delete',{
+        params:{
+            userId
         }
-        return str;
-    },
-    params:{
-        t:Math.random()
-    },
-    timeout:1000,
-})
-// 添加请求拦截器
-http.interceptors.request.use(function (config) {
-    // 在发送请求之前做些什么
-    return config;
-  }, function (error) {
-    // 对请求错误做些什么
-    return Promise.reject(error);
-  });
-  // 添加响应拦截器
-  http.interceptors.response.use(function (response) {
-    // 在发送请求之前做些什么
-    return response.data;
-  }, function (error) {
-    // 对请求错误做些什么
-    return Promise.reject(error);
-  });
-
-  export default http;
+    })
+}
+//编辑员工信息
+export function changeUser(option){
+    return http.post('/user/update',option)
+}
+//获取职务信息
