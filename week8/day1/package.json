@@ -8,7 +8,7 @@
     "jQuery": "^1.7.4",
     "sass": "^1.23.3",
     "sass-loader": "^8.0.0",
-    "swiper": "^5.2.0",
+    "swiper": "^6.5.1",
     "zepto": "^1.2.0"
   },
   "devDependencies": {
